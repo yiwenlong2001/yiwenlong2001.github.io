@@ -18,7 +18,16 @@ icon = "brand-github"
 [[social]]
 identifier = "twitter"
 name = "Twitter"
-url = "https://twitter.com"
+url = "http://twitter.com/evan072601"
 
 [social.params]
 icon = "brand-twitter"
+
+[[social]]
+identifier = "Linkedin"
+name = "Linkedin"
+url = "www.linkedin.com/in/wenlong-yi-evan"
+
+[social.params]
+icon = "brand-linkedin"
+
