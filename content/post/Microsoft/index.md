@@ -1,12 +1,13 @@
 ---
-title: Microsoft - Software Engineer Intern
-description: Interned at the DevOps team, Cloud+AI Department 
+title: Microsoft
+description: Software Engineer Intern at the DevOps team, Cloud+AI Department 
 slug: Micro
 date: 2022-08-01 00:00:00+0000
 image: microsoft.jpg
 categories:
     - Work Experience
     - Intern
+    - SDE
 tags:
     - Azure Devops
     - Typescripts

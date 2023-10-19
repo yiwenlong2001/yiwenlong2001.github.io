@@ -1,6 +1,6 @@
 ---
 title: Huawei 2012 Lab
-date: 2022-011-01 00:00:00+0000
+date: 2022-11-01 00:00:00+0000
 description: Intern at Computer Vision Group Autonomous Driving Direction
 image: huawei.jpg
 tags: 
@@ -9,10 +9,12 @@ tags:
     - Computer Vision
     - 3D Object Detection
     - BEV 
+    - Algoritm
 categories:
     - Work Experience
     - Intern
-weight: 2
+    - MLE
+weight: 3
 ---
 
 - Proposed EMAT, an End-to-end Multi-view Association Tracker for multi-object tracking, which jointly performed 3D detection and tracking from multi-camera and multi-frame images
