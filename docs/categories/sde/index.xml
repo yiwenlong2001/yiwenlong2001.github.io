@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>SDE on Wenlong Yi (Evan)</title>
+        <link>https://yiwenlong2001.github.io/categories/sde/</link>
+        <description>Recent content in SDE on Wenlong Yi (Evan)</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 01 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://yiwenlong2001.github.io/categories/sde/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Microsoft</title>
+        <link>https://yiwenlong2001.github.io/p/micro/</link>
+        <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://yiwenlong2001.github.io/p/micro/</guid>
+        <description>&lt;img src="https://yiwenlong2001.github.io/p/micro/microsoft.jpg" alt="Featured image of post Microsoft" /&gt;&lt;p&gt;• Interned at the &lt;strong&gt;DevOps team&lt;/strong&gt; to improve developer efficiency for &lt;strong&gt;Microsoft Dynamics 365 Product Line&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;• Designed and developed a frontend banner extension in the MS Azure DevOps Server that displays work reminders, including release cycles and feature requests for Azure developers&lt;/p&gt;
+&lt;p&gt;• Implemented a TypeScript and React-based extension enabling organization administrators to upload work reminders, visible to developers on corresponding repository pages&lt;/p&gt;
+&lt;p&gt;• Acquired hands-on experience in the end-to-end development process within the &lt;strong&gt;Azure DevOps environment&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;• &lt;a class=&#34;link&#34; href=&#34;https://github.com/yiwenlong2001/specific_banner&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;&lt;span style=&#34;color:blue&#34;&gt; Github Repo Link &lt;span&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>The University of Hong Kong</title>
+        <link>https://yiwenlong2001.github.io/p/hku/</link>
+        <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://yiwenlong2001.github.io/p/hku/</guid>
+        <description>&lt;img src="https://yiwenlong2001.github.io/p/hku/HKU.jpg" alt="Featured image of post The University of Hong Kong" /&gt;&lt;ul&gt;
+&lt;li&gt;Contributed to an adolescent scoliosis correction system using pedicle screws&lt;/li&gt;
+&lt;li&gt;Utilized Unity to develop a magnetic sensing software that locates pedicle screws in adolescents with spinal disorders and visualize spine morphology in order to supervise the recovery process&lt;/li&gt;
+&lt;li&gt;Exhibited at the 2022 Hong Kong Innovation &amp;amp; Technology Carnival&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
