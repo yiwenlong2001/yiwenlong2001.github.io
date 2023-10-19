@@ -1,7 +1,7 @@
 ---
 title: PyTorch CUDA Operators Parallelism Implementation and Optimization
 description: SJTU course project
-date: 2023-12-25 00:00:00+0000
+date: 2022-12-25 00:00:00+0000
 image: GPU.jpg
 tags: 
     - C/CPP

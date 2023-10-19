@@ -12,7 +12,7 @@ tags:
     - Azure Devops
     - Typescripts
     - Software Development
-weight: 1       # You can add weight to some posts to override the default sorting (date descending)
+weight: 2       # You can add weight to some posts to override the default sorting (date descending)
 ---
 
 • Interned at the **DevOps team** to improve developer efficiency for **Microsoft Dynamics 365 Product Line**
