@@ -7,6 +7,14 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Sun, 25 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://yiwenlong2001.github.io/categories/project/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Proof of uniqueness of the entropy formula</title>
+        <link>https://yiwenlong2001.github.io/p/proof-of-uniqueness-of-the-entropy-formula/</link>
+        <pubDate>Wed, 15 Dec 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https://yiwenlong2001.github.io/p/proof-of-uniqueness-of-the-entropy-formula/</guid>
+        <description>&lt;img src="https://yiwenlong2001.github.io/p/proof-of-uniqueness-of-the-entropy-formula/entropy.jpg" alt="Featured image of post Proof of uniqueness of the entropy formula" /&gt;&lt;center&gt;&lt;embed src=&#34;Information_Entropy.pdf&#34; width=&#34;850&#34; height=&#34;2600&#34;&gt;&lt;/center&gt;</description>
+        </item>
+        <item>
         <title>PyTorch CUDA Operators Parallelism Implementation and Optimization</title>
         <link>https://yiwenlong2001.github.io/p/pytorch-cuda-operators-parallelism-implementation-and-optimization/</link>
         <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>

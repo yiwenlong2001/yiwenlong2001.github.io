@@ -8,17 +8,38 @@
     <loc>https://yiwenlong2001.github.io/p/micro/</loc>
     <lastmod>2022-08-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://yiwenlong2001.github.io/p/huawei-2012-lab/</loc>
-    <lastmod>2022-11-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://yiwenlong2001.github.io/p/hku/</loc>
-    <lastmod>2022-03-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://yiwenlong2001.github.io/p/pytorch-cuda-operators-parallelism-implementation-and-optimization/</loc>
-    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
+    <loc>https://yiwenlong2001.github.io/p/proof-of-uniqueness-of-the-entropy-formula/</loc>
+    <lastmod>2021-12-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://yiwenlong2001.github.io/</loc>
-    <lastmod>2023-10-15T00:00:00+00:00</lastmod>
+    <lastmod>2023-10-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yiwenlong2001.github.io/categories/</loc>
+    <lastmod>2023-10-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yiwenlong2001.github.io/tags/cluster/</loc>
+    <lastmod>2023-10-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../</loc>
+    <lastmod>2023-10-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yiwenlong2001.github.io/tags/data-analysis/</loc>
+    <lastmod>2023-10-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yiwenlong2001.github.io/categories/note/</loc>
+    <lastmod>2023-10-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yiwenlong2001.github.io/post/</loc>
+    <lastmod>2023-10-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yiwenlong2001.github.io/tags/</loc>
+    <lastmod>2023-10-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yiwenlong2001.github.io/categories/ucla-course/</loc>
+    <lastmod>2023-10-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yiwenlong2001.github.io/tags/ucla-course-note/</loc>
+    <lastmod>2023-10-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://yiwenlong2001.github.io/page/</loc>
     <lastmod>2023-10-15T00:00:00+00:00</lastmod>
@@ -26,13 +47,7 @@
     <loc>https://yiwenlong2001.github.io/resume/</loc>
     <lastmod>2023-10-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://yiwenlong2001.github.io/categories/</loc>
-    <lastmod>2023-09-01T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://yiwenlong2001.github.io/categories/education/</loc>
-    <lastmod>2023-09-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://yiwenlong2001.github.io/post/</loc>
     <lastmod>2023-09-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://yiwenlong2001.github.io/tags/algoritm/</loc>
@@ -47,7 +62,7 @@
     <loc>https://yiwenlong2001.github.io/tags/pytorch/</loc>
     <lastmod>2022-12-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://yiwenlong2001.github.io/tags/</loc>
+    <loc>https://yiwenlong2001.github.io/p/pytorch-cuda-operators-parallelism-implementation-and-optimization/</loc>
     <lastmod>2022-12-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://yiwenlong2001.github.io/tags/3d-object-detection/</loc>
@@ -57,6 +72,9 @@
     <lastmod>2022-11-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://yiwenlong2001.github.io/tags/computer-vision/</loc>
+    <lastmod>2022-11-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yiwenlong2001.github.io/p/huawei-2012-lab/</loc>
     <lastmod>2022-11-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://yiwenlong2001.github.io/categories/intern/</loc>
@@ -89,8 +107,23 @@
     <loc>https://yiwenlong2001.github.io/tags/algorithm/</loc>
     <lastmod>2022-03-01T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://yiwenlong2001.github.io/p/hku/</loc>
+    <lastmod>2022-03-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://yiwenlong2001.github.io/tags/unity/</loc>
     <lastmod>2022-03-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yiwenlong2001.github.io/tags/entropy/</loc>
+    <lastmod>2021-12-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yiwenlong2001.github.io/tags/information-theory/</loc>
+    <lastmod>2021-12-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yiwenlong2001.github.io/categories/sjtu-course/</loc>
+    <lastmod>2021-12-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yiwenlong2001.github.io/tags/sjtu-course-thesis/</loc>
+    <lastmod>2021-12-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://yiwenlong2001.github.io/tags/b.e./</loc>
   </url><url>

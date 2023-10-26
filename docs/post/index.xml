@@ -6,7 +6,7 @@
         <description>Recent content in Posts on Wenlong Yi (Evan)</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Fri, 01 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yiwenlong2001.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 26 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yiwenlong2001.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Education</title>
         <link>https://yiwenlong2001.github.io/p/education/</link>
         <pubDate>Fri, 01 Sep 2023 00:00:00 +0000</pubDate>
@@ -57,6 +57,97 @@
 </description>
         </item>
         <item>
+        <title>Proof of uniqueness of the entropy formula</title>
+        <link>https://yiwenlong2001.github.io/p/proof-of-uniqueness-of-the-entropy-formula/</link>
+        <pubDate>Wed, 15 Dec 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https://yiwenlong2001.github.io/p/proof-of-uniqueness-of-the-entropy-formula/</guid>
+        <description>&lt;img src="https://yiwenlong2001.github.io/p/proof-of-uniqueness-of-the-entropy-formula/entropy.jpg" alt="Featured image of post Proof of uniqueness of the entropy formula" /&gt;&lt;center&gt;&lt;embed src=&#34;Information_Entropy.pdf&#34; width=&#34;850&#34; height=&#34;2600&#34;&gt;&lt;/center&gt;</description>
+        </item>
+        <item>
+        <title>Cluster review notes (updating...)</title>
+        <link>https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../</link>
+        <pubDate>Thu, 26 Oct 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../</guid>
+        <description>&lt;img src="https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../cluster.jpg" alt="Featured image of post Cluster review notes (updating...)" /&gt;&lt;h1 id=&#34;cluster&#34;&gt;Cluster&lt;/h1&gt;
+&lt;h2 id=&#34;algorithm_1-k-means&#34;&gt;Algorithm_1 K-means&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;randomly choose initial cluster centroics.&lt;/li&gt;
+&lt;li&gt;assign each point to its nearset centroic.&lt;/li&gt;
+&lt;li&gt;do iteration until the location of any centroics does not change:
+&lt;ul&gt;
+&lt;li&gt;caluculate the mean value for every point of each cluster.&lt;/li&gt;
+&lt;li&gt;relocate every point.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;algorithm_2-pam&#34;&gt;Algorithm_2 PAM&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Arbitrarily choose k objects as the initial medoids&lt;/li&gt;
+&lt;li&gt;Until no change, do
+&lt;ul&gt;
+&lt;li&gt;(Re)assign each object to the cluster to which the nearest medoid&lt;/li&gt;
+&lt;li&gt;Randomly select a non-medoid object o’, compute the total cost, S, of swapping medoid o with o’&lt;/li&gt;
+&lt;li&gt;If S &amp;lt; 0 then swap o with o’ to form the new set of k medoids&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Swapping Cost:&lt;/strong&gt; Measure whether o’ is better than o as a medoid&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;algorithm_3-clara&#34;&gt;Algorithm_3 CLARA&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;random sample in huge data&lt;/li&gt;
+&lt;li&gt;do PAM&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;PAM search the whole graph&lt;br&gt;
+CLARA search some random sub-graphs&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;algorithm_4-hierarchical-clustering&#34;&gt;Algorithm_4 Hierarchical Clustering&lt;/h2&gt;
+&lt;h3 id=&#34;agnes-agglomerative&#34;&gt;AGNES (agglomerative)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Initially, each object is a cluster&lt;/li&gt;
+&lt;li&gt;Step-by-step cluster merging, until all objects form a cluster&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;diana-divisive&#34;&gt;DIANA (divisive)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Initially, all objects are in one cluster&lt;/li&gt;
+&lt;li&gt;Step-by-step splitting clusters until each cluster contains only one object&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;algorithm_5-birch&#34;&gt;Algorithm_5 BIRCH&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Clustering Feature:  CF = (N, LS, SS)&lt;br&gt;
+N: #data points&lt;br&gt;
+LS: sum of position&lt;br&gt;
+SS: sum of the square of the position&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Phase 1: scan DB to build an initial inmemory CF tree (a multi-level compression of the data that tries to preserve the inherent clustering structure of the data)&lt;/li&gt;
+&lt;li&gt;Phase 2: use an arbitrary clustering algorithm to cluster the leaf nodes of the CF-tree&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;algorithm_6-distance-based-methods&#34;&gt;Algorithm_6 Distance-based Methods&lt;/h2&gt;
+</description>
+        </item>
+        <item>
+        <title>PyTorch CUDA Operators Parallelism Implementation and Optimization</title>
+        <link>https://yiwenlong2001.github.io/p/pytorch-cuda-operators-parallelism-implementation-and-optimization/</link>
+        <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://yiwenlong2001.github.io/p/pytorch-cuda-operators-parallelism-implementation-and-optimization/</guid>
+        <description>&lt;img src="https://yiwenlong2001.github.io/p/pytorch-cuda-operators-parallelism-implementation-and-optimization/GPU.jpg" alt="Featured image of post PyTorch CUDA Operators Parallelism Implementation and Optimization" /&gt;&lt;ul&gt;
+&lt;li&gt;Employed warp-level primitives to optimize warp reduce of Softmax Kernel, which improved efficiency by 7%&lt;/li&gt;
+&lt;li&gt;Implemented matrix multiplication kernel with matrix chunking and shared memory in C and CUDA&lt;/li&gt;
+&lt;li&gt;Optimized shared memory access via vector read instruction LDS.128, resulting in a 3% efficiency improvement
+&lt;a class=&#34;link&#34; href=&#34;https://github.com/wangshanyw/PyTorch-CUDA-Operators-Implementation-and-Optimization&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;&lt;span style=&#34;color:blue&#34;&gt; Github Repo Link &lt;span&gt;&lt;/a&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://docs.google.com/presentation/d/1uhkq8XJ8SvoxHUiech5nn_noU7b2TYk7/edit?usp=sharing&amp;amp;ouid=108660935975018643927&amp;amp;rtpof=true&amp;amp;sd=true&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;&lt;span style=&#34;color:blue&#34;&gt; Docs Link &lt;span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>Huawei 2012 Lab</title>
         <link>https://yiwenlong2001.github.io/p/huawei-2012-lab/</link>
         <pubDate>Tue, 01 Nov 2022 00:00:00 +0000</pubDate>
@@ -79,23 +170,6 @@
 &lt;li&gt;Contributed to an adolescent scoliosis correction system using pedicle screws&lt;/li&gt;
 &lt;li&gt;Utilized Unity to develop a magnetic sensing software that locates pedicle screws in adolescents with spinal disorders and visualize spine morphology in order to supervise the recovery process&lt;/li&gt;
 &lt;li&gt;Exhibited at the 2022 Hong Kong Innovation &amp;amp; Technology Carnival&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        </item>
-        <item>
-        <title>PyTorch CUDA Operators Parallelism Implementation and Optimization</title>
-        <link>https://yiwenlong2001.github.io/p/pytorch-cuda-operators-parallelism-implementation-and-optimization/</link>
-        <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://yiwenlong2001.github.io/p/pytorch-cuda-operators-parallelism-implementation-and-optimization/</guid>
-        <description>&lt;img src="https://yiwenlong2001.github.io/p/pytorch-cuda-operators-parallelism-implementation-and-optimization/GPU.jpg" alt="Featured image of post PyTorch CUDA Operators Parallelism Implementation and Optimization" /&gt;&lt;ul&gt;
-&lt;li&gt;Employed warp-level primitives to optimize warp reduce of Softmax Kernel, which improved efficiency by 7%&lt;/li&gt;
-&lt;li&gt;Implemented matrix multiplication kernel with matrix chunking and shared memory in C and CUDA&lt;/li&gt;
-&lt;li&gt;Optimized shared memory access via vector read instruction LDS.128, resulting in a 3% efficiency improvement
-&lt;a class=&#34;link&#34; href=&#34;https://github.com/wangshanyw/PyTorch-CUDA-Operators-Implementation-and-Optimization&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;&lt;span style=&#34;color:blue&#34;&gt; Github Repo Link &lt;span&gt;&lt;/a&gt;
-&lt;a class=&#34;link&#34; href=&#34;https://docs.google.com/presentation/d/1uhkq8XJ8SvoxHUiech5nn_noU7b2TYk7/edit?usp=sharing&amp;amp;ouid=108660935975018643927&amp;amp;rtpof=true&amp;amp;sd=true&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;&lt;span style=&#34;color:blue&#34;&gt; Docs Link &lt;span&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         </item>

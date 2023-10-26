@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>UCLA Course on Wenlong Yi (Evan)</title>
+        <link>https://yiwenlong2001.github.io/categories/ucla-course/</link>
+        <description>Recent content in UCLA Course on Wenlong Yi (Evan)</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 26 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yiwenlong2001.github.io/categories/ucla-course/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Cluster review notes (updating...)</title>
+        <link>https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../</link>
+        <pubDate>Thu, 26 Oct 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../</guid>
+        <description>&lt;img src="https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../cluster.jpg" alt="Featured image of post Cluster review notes (updating...)" /&gt;&lt;h1 id=&#34;cluster&#34;&gt;Cluster&lt;/h1&gt;
+&lt;h2 id=&#34;algorithm_1-k-means&#34;&gt;Algorithm_1 K-means&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;randomly choose initial cluster centroics.&lt;/li&gt;
+&lt;li&gt;assign each point to its nearset centroic.&lt;/li&gt;
+&lt;li&gt;do iteration until the location of any centroics does not change:
+&lt;ul&gt;
+&lt;li&gt;caluculate the mean value for every point of each cluster.&lt;/li&gt;
+&lt;li&gt;relocate every point.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;algorithm_2-pam&#34;&gt;Algorithm_2 PAM&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Arbitrarily choose k objects as the initial medoids&lt;/li&gt;
+&lt;li&gt;Until no change, do
+&lt;ul&gt;
+&lt;li&gt;(Re)assign each object to the cluster to which the nearest medoid&lt;/li&gt;
+&lt;li&gt;Randomly select a non-medoid object o’, compute the total cost, S, of swapping medoid o with o’&lt;/li&gt;
+&lt;li&gt;If S &amp;lt; 0 then swap o with o’ to form the new set of k medoids&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Swapping Cost:&lt;/strong&gt; Measure whether o’ is better than o as a medoid&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;algorithm_3-clara&#34;&gt;Algorithm_3 CLARA&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;random sample in huge data&lt;/li&gt;
+&lt;li&gt;do PAM&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;PAM search the whole graph&lt;br&gt;
+CLARA search some random sub-graphs&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;algorithm_4-hierarchical-clustering&#34;&gt;Algorithm_4 Hierarchical Clustering&lt;/h2&gt;
+&lt;h3 id=&#34;agnes-agglomerative&#34;&gt;AGNES (agglomerative)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Initially, each object is a cluster&lt;/li&gt;
+&lt;li&gt;Step-by-step cluster merging, until all objects form a cluster&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;diana-divisive&#34;&gt;DIANA (divisive)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Initially, all objects are in one cluster&lt;/li&gt;
+&lt;li&gt;Step-by-step splitting clusters until each cluster contains only one object&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;algorithm_5-birch&#34;&gt;Algorithm_5 BIRCH&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Clustering Feature:  CF = (N, LS, SS)&lt;br&gt;
+N: #data points&lt;br&gt;
+LS: sum of position&lt;br&gt;
+SS: sum of the square of the position&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Phase 1: scan DB to build an initial inmemory CF tree (a multi-level compression of the data that tries to preserve the inherent clustering structure of the data)&lt;/li&gt;
+&lt;li&gt;Phase 2: use an arbitrary clustering algorithm to cluster the leaf nodes of the CF-tree&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;algorithm_6-distance-based-methods&#34;&gt;Algorithm_6 Distance-based Methods&lt;/h2&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
