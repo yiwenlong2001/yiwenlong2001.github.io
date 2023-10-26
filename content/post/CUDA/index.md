@@ -10,7 +10,6 @@ tags:
     - Algoritm
 categories:
     - Project
-weight: 4
 ---
 
 - Employed warp-level primitives to optimize warp reduce of Softmax Kernel, which improved efficiency by 7%

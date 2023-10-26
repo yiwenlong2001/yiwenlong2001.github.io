@@ -13,7 +13,6 @@ tags:
     - Python
     - Algorithm
     - Software Development
-weight: 3       # You can add weight to some posts to override the default sorting (date descending)
 ---
 
  - Contributed to an adolescent scoliosis correction system using pedicle screws

@@ -14,7 +14,6 @@ categories:
     - Work Experience
     - Intern
     - MLE
-weight: 3
 ---
 
 - Proposed EMAT, an End-to-end Multi-view Association Tracker for multi-object tracking, which jointly performed 3D detection and tracking from multi-camera and multi-frame images
