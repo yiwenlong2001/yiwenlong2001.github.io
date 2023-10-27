@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Project on Wenlong Yi (Evan)</title>
+        <link>https://yiwenlong2001.github.io/categories/project/</link>
+        <description>Recent content in Project on Wenlong Yi (Evan)</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sun, 25 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://yiwenlong2001.github.io/categories/project/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Proof of uniqueness of the entropy formula</title>
+        <link>https://yiwenlong2001.github.io/p/proof-of-uniqueness-of-the-entropy-formula/</link>
+        <pubDate>Wed, 15 Dec 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https://yiwenlong2001.github.io/p/proof-of-uniqueness-of-the-entropy-formula/</guid>
+        <description>&lt;img src="https://yiwenlong2001.github.io/p/proof-of-uniqueness-of-the-entropy-formula/entropy.jpg" alt="Featured image of post Proof of uniqueness of the entropy formula" /&gt;&lt;center&gt;&lt;embed src=&#34;Information_Entropy.pdf&#34; width=&#34;850&#34; height=&#34;2600&#34;&gt;&lt;/center&gt;</description>
+        </item>
+        <item>
+        <title>PyTorch CUDA Operators Parallelism Implementation and Optimization</title>
+        <link>https://yiwenlong2001.github.io/p/pytorch-cuda-operators-parallelism-implementation-and-optimization/</link>
+        <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://yiwenlong2001.github.io/p/pytorch-cuda-operators-parallelism-implementation-and-optimization/</guid>
+        <description>&lt;img src="https://yiwenlong2001.github.io/p/pytorch-cuda-operators-parallelism-implementation-and-optimization/GPU.jpg" alt="Featured image of post PyTorch CUDA Operators Parallelism Implementation and Optimization" /&gt;&lt;ul&gt;
+&lt;li&gt;Employed warp-level primitives to optimize warp reduce of Softmax Kernel, which improved efficiency by 7%&lt;/li&gt;
+&lt;li&gt;Implemented matrix multiplication kernel with matrix chunking and shared memory in C and CUDA&lt;/li&gt;
+&lt;li&gt;Optimized shared memory access via vector read instruction LDS.128, resulting in a 3% efficiency improvement
+&lt;a class=&#34;link&#34; href=&#34;https://github.com/wangshanyw/PyTorch-CUDA-Operators-Implementation-and-Optimization&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;&lt;span style=&#34;color:blue&#34;&gt; Github Repo Link &lt;span&gt;&lt;/a&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://docs.google.com/presentation/d/1uhkq8XJ8SvoxHUiech5nn_noU7b2TYk7/edit?usp=sharing&amp;amp;ouid=108660935975018643927&amp;amp;rtpof=true&amp;amp;sd=true&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;&lt;span style=&#34;color:blue&#34;&gt; Docs Link &lt;span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

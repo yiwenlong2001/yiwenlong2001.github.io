@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Information theory on Wenlong Yi (Evan)</title>
+        <link>https://yiwenlong2001.github.io/tags/information-theory/</link>
+        <description>Recent content in Information theory on Wenlong Yi (Evan)</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 15 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://yiwenlong2001.github.io/tags/information-theory/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Proof of uniqueness of the entropy formula</title>
+        <link>https://yiwenlong2001.github.io/p/proof-of-uniqueness-of-the-entropy-formula/</link>
+        <pubDate>Wed, 15 Dec 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https://yiwenlong2001.github.io/p/proof-of-uniqueness-of-the-entropy-formula/</guid>
+        <description>&lt;img src="https://yiwenlong2001.github.io/p/proof-of-uniqueness-of-the-entropy-formula/entropy.jpg" alt="Featured image of post Proof of uniqueness of the entropy formula" /&gt;&lt;center&gt;&lt;embed src=&#34;Information_Entropy.pdf&#34; width=&#34;850&#34; height=&#34;2600&#34;&gt;&lt;/center&gt;</description>
+        </item>
+        
+    </channel>
+</rss>
