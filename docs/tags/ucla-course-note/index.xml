@@ -58,6 +58,19 @@ CLARA search some random sub-graphs&lt;/p&gt;
 &lt;li&gt;Initially, all objects are in one cluster&lt;/li&gt;
 &lt;li&gt;Step-by-step splitting clusters until each cluster contains only one object&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h3 id=&#34;more-details&#34;&gt;More Details&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Single-Link（最短距离链接）：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Single-Link聚类方法将两个簇之间的距离定义为它们中最接近的两个点之间的距离。换句话说，它测量了两个簇中最相似的成员之间的距离。这种方法倾向于形成具有长而窄的簇，因为它强调了局部相似性。Single-Link在处理非凸形状的簇时表现良好，但容易受到噪声和异常值的影响。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Complete-Link（最长距离链接）：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Complete-Link聚类方法将两个簇之间的距离定义为它们中最不相似的两个点之间的距离。它关注的是两个簇中最不相似的成员之间的距离。这种方法更倾向于形成具有更紧凑形状的簇，因为它强调了簇的全局相似性。Complete-Link对于处理不同大小和不同密度的簇效果较好，但可能会受到异常值的干扰。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;algorithm_5-birch&#34;&gt;Algorithm_5 BIRCH&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Clustering Feature:  CF = (N, LS, SS)&lt;br&gt;
@@ -69,7 +82,55 @@ SS: sum of the square of the position&lt;/p&gt;
 &lt;li&gt;Phase 1: scan DB to build an initial inmemory CF tree (a multi-level compression of the data that tries to preserve the inherent clustering structure of the data)&lt;/li&gt;
 &lt;li&gt;Phase 2: use an arbitrary clustering algorithm to cluster the leaf nodes of the CF-tree&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../birch.png&#34;
+	width=&#34;1066&#34;
+	height=&#34;783&#34;
+	srcset=&#34;https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../birch_hu1f7cfcf85d02ae0cac7b9002dcc28f68_55343_480x0_resize_box_3.png 480w, https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../birch_hu1f7cfcf85d02ae0cac7b9002dcc28f68_55343_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;136&#34;
+		data-flex-basis=&#34;326px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;一开始只有一个空的root，然后一个一个加进去，如果在已有节点的球体内，则合为一个cluster，如果一个cluster超过一定数量，则分裂：选择最远两个点最为两个新的cluster中心点，重新分配，保证树结构完整性。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;algorithm_6-distance-based-methods&#34;&gt;Algorithm_6 Distance-based Methods&lt;/h2&gt;
+&lt;h3 id=&#34;previous-knowledge&#34;&gt;Previous Knowledge&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Eps&lt;/strong&gt;: Maximum radius of the neighborhood&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MinPts&lt;/strong&gt;: Minimum number of points in an Eps- neighborhood of that point&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;NEps(p)&lt;/strong&gt;: {q | dist(p,q) $\leq$ Eps}&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Core object p&lt;/strong&gt;: |Neps(p)| $\ge$ MinPts&lt;/li&gt;
+&lt;li&gt;Point q &lt;strong&gt;directly density-reachable&lt;/strong&gt; from p iff q $\in$ Neps(p) and p is a core object&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Density-reachable:&lt;/strong&gt; p1 $\rightarrow$ p2, p2 $\rightarrow$ p3, &amp;hellip;, pn-1 $\rightarrow$ pn then pn is density-reachable from p1&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Density-connected:&lt;/strong&gt; Points p, q are density-reachable from o $\rightarrow$ p and q are density-connected&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;dbscan&#34;&gt;DBSCAN&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Arbitrary select a point p&lt;/li&gt;
+&lt;li&gt;Retrieve all points directly density-reachable from p wrt Eps and MinPts&lt;/li&gt;
+&lt;li&gt;If p is a core point, a cluster is formed&lt;/li&gt;
+&lt;li&gt;If p is a border point, no points are density- reachable from p and DBSCAN visits the next point of the database&lt;/li&gt;
+&lt;li&gt;Continue the process until all of the points have been processed&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../DBSCAN.png&#34;
+	width=&#34;2154&#34;
+	height=&#34;820&#34;
+	srcset=&#34;https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../DBSCAN_huabd1eadf2ef4cdb183dd88d1d60e4bc1_347203_480x0_resize_box_3.png 480w, https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../DBSCAN_huabd1eadf2ef4cdb183dd88d1d60e4bc1_347203_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;262&#34;
+		data-flex-basis=&#34;630px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;P.S. 一个一个判断，如果是cluster，且范围内点已形成cluster，则加入，若无先前cluster，则新建立一个。若是后建立的和之前建立的通过一个点reachable了，则将两个cluster合为一个。&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
         </item>
         

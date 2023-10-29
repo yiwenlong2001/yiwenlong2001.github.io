@@ -296,10 +296,16 @@
       <ol>
         <li><a href="#agnes-agglomerative">AGNES (agglomerative)</a></li>
         <li><a href="#diana-divisive">DIANA (divisive)</a></li>
+        <li><a href="#more-details">More Details</a></li>
       </ol>
     </li>
     <li><a href="#algorithm_5-birch">Algorithm_5 BIRCH</a></li>
-    <li><a href="#algorithm_6-distance-based-methods">Algorithm_6 Distance-based Methods</a></li>
+    <li><a href="#algorithm_6-distance-based-methods">Algorithm_6 Distance-based Methods</a>
+      <ol>
+        <li><a href="#previous-knowledge">Previous Knowledge</a></li>
+        <li><a href="#dbscan">DBSCAN</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -445,6 +451,19 @@ CLARA search some random sub-graphs</p>
 <li>Initially, all objects are in one cluster</li>
 <li>Step-by-step splitting clusters until each cluster contains only one object</li>
 </ul>
+<h3 id="more-details">More Details</h3>
+<ul>
+<li>Single-Link（最短距离链接）：</li>
+</ul>
+<blockquote>
+<p>Single-Link聚类方法将两个簇之间的距离定义为它们中最接近的两个点之间的距离。换句话说，它测量了两个簇中最相似的成员之间的距离。这种方法倾向于形成具有长而窄的簇，因为它强调了局部相似性。Single-Link在处理非凸形状的簇时表现良好，但容易受到噪声和异常值的影响。</p>
+</blockquote>
+<ul>
+<li>Complete-Link（最长距离链接）：</li>
+</ul>
+<blockquote>
+<p>Complete-Link聚类方法将两个簇之间的距离定义为它们中最不相似的两个点之间的距离。它关注的是两个簇中最不相似的成员之间的距离。这种方法更倾向于形成具有更紧凑形状的簇，因为它强调了簇的全局相似性。Complete-Link对于处理不同大小和不同密度的簇效果较好，但可能会受到异常值的干扰。</p>
+</blockquote>
 <h2 id="algorithm_5-birch">Algorithm_5 BIRCH</h2>
 <blockquote>
 <p>Clustering Feature:  CF = (N, LS, SS)<br>
@@ -456,7 +475,55 @@ SS: sum of the square of the position</p>
 <li>Phase 1: scan DB to build an initial inmemory CF tree (a multi-level compression of the data that tries to preserve the inherent clustering structure of the data)</li>
 <li>Phase 2: use an arbitrary clustering algorithm to cluster the leaf nodes of the CF-tree</li>
 </ul>
+<p><img src="/p/cluster-review-notes-updating.../birch.png"
+	width="1066"
+	height="783"
+	srcset="/p/cluster-review-notes-updating.../birch_hu1f7cfcf85d02ae0cac7b9002dcc28f68_55343_480x0_resize_box_3.png 480w, /p/cluster-review-notes-updating.../birch_hu1f7cfcf85d02ae0cac7b9002dcc28f68_55343_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="136"
+		data-flex-basis="326px"
+	
+></p>
+<blockquote>
+<p>一开始只有一个空的root，然后一个一个加进去，如果在已有节点的球体内，则合为一个cluster，如果一个cluster超过一定数量，则分裂：选择最远两个点最为两个新的cluster中心点，重新分配，保证树结构完整性。</p>
+</blockquote>
 <h2 id="algorithm_6-distance-based-methods">Algorithm_6 Distance-based Methods</h2>
+<h3 id="previous-knowledge">Previous Knowledge</h3>
+<ul>
+<li><strong>Eps</strong>: Maximum radius of the neighborhood</li>
+<li><strong>MinPts</strong>: Minimum number of points in an Eps- neighborhood of that point</li>
+<li><strong>NEps(p)</strong>: {q | dist(p,q) $\leq$ Eps}</li>
+<li><strong>Core object p</strong>: |Neps(p)| $\ge$ MinPts</li>
+<li>Point q <strong>directly density-reachable</strong> from p iff q $\in$ Neps(p) and p is a core object</li>
+<li><strong>Density-reachable:</strong> p1 $\rightarrow$ p2, p2 $\rightarrow$ p3, &hellip;, pn-1 $\rightarrow$ pn then pn is density-reachable from p1</li>
+<li><strong>Density-connected:</strong> Points p, q are density-reachable from o $\rightarrow$ p and q are density-connected</li>
+</ul>
+<h3 id="dbscan">DBSCAN</h3>
+<ul>
+<li>Arbitrary select a point p</li>
+<li>Retrieve all points directly density-reachable from p wrt Eps and MinPts</li>
+<li>If p is a core point, a cluster is formed</li>
+<li>If p is a border point, no points are density- reachable from p and DBSCAN visits the next point of the database</li>
+<li>Continue the process until all of the points have been processed</li>
+</ul>
+<p><img src="/p/cluster-review-notes-updating.../DBSCAN.png"
+	width="2154"
+	height="820"
+	srcset="/p/cluster-review-notes-updating.../DBSCAN_huabd1eadf2ef4cdb183dd88d1d60e4bc1_347203_480x0_resize_box_3.png 480w, /p/cluster-review-notes-updating.../DBSCAN_huabd1eadf2ef4cdb183dd88d1d60e4bc1_347203_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="262"
+		data-flex-basis="630px"
+	
+></p>
+<blockquote>
+<p>P.S. 一个一个判断，如果是cluster，且范围内点已形成cluster，则加入，若无先前cluster，则新建立一个。若是后建立的和之前建立的通过一个点reachable了，则将两个cluster合为一个。</p>
+</blockquote>
 
 </section>
 
