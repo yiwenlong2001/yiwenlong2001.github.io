@@ -6,7 +6,116 @@
         <description>Recent content in Note on Wenlong Yi (Evan)</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Thu, 26 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yiwenlong2001.github.io/categories/note/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 28 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yiwenlong2001.github.io/categories/note/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>NNF review notes (updating...)</title>
+        <link>https://yiwenlong2001.github.io/p/nnf-review-notes-updating.../</link>
+        <pubDate>Sat, 28 Oct 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://yiwenlong2001.github.io/p/nnf-review-notes-updating.../</guid>
+        <description>&lt;img src="https://yiwenlong2001.github.io/p/nnf-review-notes-updating.../NNF.png" alt="Featured image of post NNF review notes (updating...)" /&gt;&lt;h1 id=&#34;nnf-和-对应拓展&#34;&gt;NNF 和 对应拓展&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://yiwenlong2001.github.io/graph.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;nnf&#34;&gt;NNF&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;输入为variable以及variable的否定，由与或门组成的逻辑网络&lt;/li&gt;
+&lt;li&gt;这是一种最常见的逻辑网络，我们没办法做什么&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;dnnf&#34;&gt;DNNF&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;在NNF的基础上，要求每一个and节点的任意两个分支所涉及的节点交集为空（no overlap）&lt;/li&gt;
+&lt;li&gt;在这个网络上，NNF的可行性可以被简单地验证&lt;/li&gt;
+&lt;li&gt;我们可以在多项式时间内执行：CO, CE, ME这三个任务&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;任务汇总：&lt;br&gt;
+CO: consistency&lt;br&gt;
+VA: Validity&lt;br&gt;
+SE: sentential entailment&lt;br&gt;
+&lt;strong&gt;CE: clausal entailment(KB implies clause)&lt;/strong&gt;&lt;br&gt;
+IP: implicant testing(term implies KB)&lt;br&gt;
+EQ: equivalence testing&lt;br&gt;
+CT: model countig&lt;br&gt;
+ME: model enumeration&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;DNNF能够在线性时间内完成clause entailment&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果一个NNF子图能够在线性时间内完成clause entailment，我们称之为tractable。DNNF是tractable的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;dnnf-1&#34;&gt;dNNF&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;在NNF的基础上，要求每一个or节点的任意两个分支的输入之间互斥&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;E.g.  $(\neg A \land B) \lor (A \land \neg B)$ 就是互斥的&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;这意味着无论你怎么取值，or节点的不可能有两个输入同时为true&lt;/li&gt;
+&lt;li&gt;dNNF不是tractable的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;snnf&#34;&gt;sNNF&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;smoothness&amp;rdquo;，在NNF的基础上，要求每一个or节点的任意两个分支所涉及的参数必须相同。&lt;/li&gt;
+&lt;li&gt;sNNF不是tractable的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;d-dnnf&#34;&gt;d-DNNF&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;顾名思义，同时满足dNNF和DNNF。&lt;/li&gt;
+&lt;li&gt;d-DNNF是tractable的。&lt;/li&gt;
+&lt;li&gt;d-DNNF可以在多项式时间内实现VA， IP， CT任务。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;sd-dnnf&#34;&gt;sd-DNNF&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;同时满足dNNF和DNNF和sNNF&lt;/li&gt;
+&lt;li&gt;tractable。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;f-nnf&#34;&gt;f-NNF&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;flatness or shallow circuit&lt;/li&gt;
+&lt;li&gt;满足性质：网络仅仅只有两层&lt;/li&gt;
+&lt;li&gt;Simple conjunction：由or-and-variable组成，且每个and下的variable均各不相同，我们可以将这种网络改写为DNF形式。&lt;/li&gt;
+&lt;li&gt;Simple conjunction同时满足decomposity性质。&lt;/li&gt;
+&lt;li&gt;Simple disjunction，CNF，同上。&lt;/li&gt;
+&lt;li&gt;f-NNF和CNF不是tractable。但是DNF是tractable的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;pi&#34;&gt;PI&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;prime Implicates, 是一种特殊的CNF，要求CNF满足：
+&lt;ul&gt;
+&lt;li&gt;没有一个clause是其他clause的子集（都是有用的clause）&lt;/li&gt;
+&lt;li&gt;如果可以进行resolution，那么resolution的结果一定本来就可以被其中某个clause imply。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;DNF的版本称之为IP&lt;/li&gt;
+&lt;li&gt;PI来自于CNF， 可以在多项式时间内解决CO, CE, ME, VA, IP, SE, EQ问题&lt;/li&gt;
+&lt;li&gt;IP来自于DNF，可以额外在多项式时间内解决VA, IP, SE, EQ问题。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;bdd&#34;&gt;BDD&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;decision graph： variable的取值由其parent决定。&lt;/li&gt;
+&lt;li&gt;同时还是decomposition。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;fbdd&#34;&gt;FBDD&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;test one property：从任何一条根节点到叶子节点的路径上，每一个variable都只能出现一次&lt;/li&gt;
+&lt;li&gt;是在d-DNNF和BDD的基础上的，因此他可以在多项式时间内解决七个问题。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;obdd&#34;&gt;OBDD&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;在任意从根节点到叶子节点的路径上，都满足同一variable的顺序&lt;/li&gt;
+&lt;li&gt;decision decomposability order&lt;/li&gt;
+&lt;li&gt;可以在多项式时间内完成SE， EQ任务，因此它在多项式时间内可以完成所有的任务。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>Cluster review notes (updating...)</title>
         <link>https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../</link>
         <pubDate>Thu, 26 Oct 2023 00:00:00 +0000</pubDate>

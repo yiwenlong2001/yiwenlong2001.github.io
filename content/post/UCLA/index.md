@@ -6,8 +6,6 @@ image: ucla.jpg
 categories:
     - Education
 tags:
-    - M.S.
-    - B.E.
 weight: 2  
 ---
 

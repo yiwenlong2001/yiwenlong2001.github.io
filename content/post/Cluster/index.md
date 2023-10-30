@@ -9,7 +9,6 @@ tags:
     - Cluster
 categories:
     - Note
-    - UCLA Course
 ---
 
 # Cluster

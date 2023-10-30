@@ -8,7 +8,6 @@ tags:
     - SJTU course thesis
     - Entropy
 categories:
-    - SJTU course
     - project
 weight: 4
 ---

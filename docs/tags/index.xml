@@ -6,7 +6,39 @@
         <description>Recent content in Tags on Wenlong Yi (Evan)</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Thu, 26 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yiwenlong2001.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 28 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yiwenlong2001.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Automatic Reasoning</title>
+        <link>https://yiwenlong2001.github.io/tags/automatic-reasoning/</link>
+        <pubDate>Sat, 28 Oct 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://yiwenlong2001.github.io/tags/automatic-reasoning/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>CNNF</title>
+        <link>https://yiwenlong2001.github.io/tags/cnnf/</link>
+        <pubDate>Sat, 28 Oct 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://yiwenlong2001.github.io/tags/cnnf/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>NNF</title>
+        <link>https://yiwenlong2001.github.io/tags/nnf/</link>
+        <pubDate>Sat, 28 Oct 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://yiwenlong2001.github.io/tags/nnf/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>UCLA Course Note</title>
+        <link>https://yiwenlong2001.github.io/tags/ucla-course-note/</link>
+        <pubDate>Sat, 28 Oct 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://yiwenlong2001.github.io/tags/ucla-course-note/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Cluster</title>
         <link>https://yiwenlong2001.github.io/tags/cluster/</link>
         <pubDate>Thu, 26 Oct 2023 00:00:00 +0000</pubDate>
@@ -23,19 +55,11 @@
         <description></description>
         </item>
         <item>
-        <title>UCLA Course Note</title>
-        <link>https://yiwenlong2001.github.io/tags/ucla-course-note/</link>
-        <pubDate>Thu, 26 Oct 2023 00:00:00 +0000</pubDate>
-        
-        <guid>https://yiwenlong2001.github.io/tags/ucla-course-note/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Algoritm</title>
-        <link>https://yiwenlong2001.github.io/tags/algoritm/</link>
+        <title>Algorithm</title>
+        <link>https://yiwenlong2001.github.io/tags/algorithm/</link>
         <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://yiwenlong2001.github.io/tags/algoritm/</guid>
+        <guid>https://yiwenlong2001.github.io/tags/algorithm/</guid>
         <description></description>
         </item>
         <item>
@@ -52,78 +76,6 @@
         <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
         
         <guid>https://yiwenlong2001.github.io/tags/pytorch/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>3D Object Detection</title>
-        <link>https://yiwenlong2001.github.io/tags/3d-object-detection/</link>
-        <pubDate>Tue, 01 Nov 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://yiwenlong2001.github.io/tags/3d-object-detection/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>BEV</title>
-        <link>https://yiwenlong2001.github.io/tags/bev/</link>
-        <pubDate>Tue, 01 Nov 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://yiwenlong2001.github.io/tags/bev/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Computer Vision</title>
-        <link>https://yiwenlong2001.github.io/tags/computer-vision/</link>
-        <pubDate>Tue, 01 Nov 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://yiwenlong2001.github.io/tags/computer-vision/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Python</title>
-        <link>https://yiwenlong2001.github.io/tags/python/</link>
-        <pubDate>Tue, 01 Nov 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://yiwenlong2001.github.io/tags/python/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Azure Devops</title>
-        <link>https://yiwenlong2001.github.io/tags/azure-devops/</link>
-        <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://yiwenlong2001.github.io/tags/azure-devops/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Software Development</title>
-        <link>https://yiwenlong2001.github.io/tags/software-development/</link>
-        <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://yiwenlong2001.github.io/tags/software-development/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Typescripts</title>
-        <link>https://yiwenlong2001.github.io/tags/typescripts/</link>
-        <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://yiwenlong2001.github.io/tags/typescripts/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Algorithm</title>
-        <link>https://yiwenlong2001.github.io/tags/algorithm/</link>
-        <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://yiwenlong2001.github.io/tags/algorithm/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Unity</title>
-        <link>https://yiwenlong2001.github.io/tags/unity/</link>
-        <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://yiwenlong2001.github.io/tags/unity/</guid>
         <description></description>
         </item>
         <item>
@@ -151,27 +103,11 @@
         <description></description>
         </item>
         <item>
-        <title>B.E.</title>
-        <link>https://yiwenlong2001.github.io/tags/b.e./</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://yiwenlong2001.github.io/tags/b.e./</guid>
-        <description></description>
-        </item>
-        <item>
         <title>C/CPP</title>
         <link>https://yiwenlong2001.github.io/tags/c/cpp/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://yiwenlong2001.github.io/tags/c/cpp/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>M.S.</title>
-        <link>https://yiwenlong2001.github.io/tags/m.s./</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://yiwenlong2001.github.io/tags/m.s./</guid>
         <description></description>
         </item>
         

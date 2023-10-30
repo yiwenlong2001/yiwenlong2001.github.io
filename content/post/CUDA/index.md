@@ -7,7 +7,7 @@ tags:
     - C/CPP
     - Pytorch
     - CUDA
-    - Algoritm
+    - Algorithm
 categories:
     - Project
 ---
