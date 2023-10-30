@@ -14,7 +14,7 @@ categories:
 
 # NNF 和 对应拓展
 
-![](./graph.png)
+![](graph.png)
 
 ## NNF
 
