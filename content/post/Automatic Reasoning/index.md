@@ -12,7 +12,7 @@ categories:
     - Note
 ---
 
-# NNF 和 对应拓展
+# NNF 和 对应拓展性质
 
 ![](graph.png)
 
@@ -99,4 +99,17 @@ categories:
 - 在任意从根节点到叶子节点的路径上，都满足同一variable的顺序
 - decision decomposability order
 - 可以在多项式时间内完成SE， EQ任务，因此它在多项式时间内可以完成所有的任务。
+
+# DNNF详解
+
+> transformation operation:  
+> CD: conditioning.   
+> SFO: single variable.   
+> FO: multiple variable.   
+> &: conjunction.   
+> B&: bounded conjoin.   
+> |: disjoin.   
+> B|: bounded disjoin.  
+> ~: negate
+
 

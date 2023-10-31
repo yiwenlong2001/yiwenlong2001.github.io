@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='One of notes of CS264 about NNF'>
-<title>NNF review notes (updating...)</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='One of notes of CS245'>
+<title>Classification review notes (updating...)</title>
 
-<link rel='canonical' href='https://yiwenlong2001.github.io/p/nnf-review-notes-updating.../'>
+<link rel='canonical' href='https://yiwenlong2001.github.io/p/classification-review-notes-updating.../'>
 
-<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='NNF review notes (updating...)'>
-<meta property='og:description' content='One of notes of CS264 about NNF'>
-<meta property='og:url' content='https://yiwenlong2001.github.io/p/nnf-review-notes-updating.../'>
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='Classification review notes (updating...)'>
+<meta property='og:description' content='One of notes of CS245'>
+<meta property='og:url' content='https://yiwenlong2001.github.io/p/classification-review-notes-updating.../'>
 <meta property='og:site_name' content='Wenlong Yi (Evan)'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Automatic Reasoning' /><meta property='article:tag' content='UCLA Course Note' /><meta property='article:tag' content='NNF' /><meta property='article:tag' content='CNNF' /><meta property='article:published_time' content='2023-10-28T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-10-28T00:00:00&#43;00:00'/><meta property='og:image' content='https://yiwenlong2001.github.io/p/nnf-review-notes-updating.../NNF.png' />
-<meta name="twitter:title" content="NNF review notes (updating...)">
-<meta name="twitter:description" content="One of notes of CS264 about NNF"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://yiwenlong2001.github.io/p/nnf-review-notes-updating.../NNF.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Data analysis' /><meta property='article:tag' content='UCLA Course Note' /><meta property='article:tag' content='Classification' /><meta property='article:published_time' content='2023-10-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-10-30T00:00:00&#43;00:00'/><meta property='og:image' content='https://yiwenlong2001.github.io/p/classification-review-notes-updating.../classification.png' />
+<meta name="twitter:title" content="Classification review notes (updating...)">
+<meta name="twitter:description" content="One of notes of CS245"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://yiwenlong2001.github.io/p/classification-review-notes-updating.../classification.png' />
     <link rel="shortcut icon" href="/favicon.png" />
 
     </head>
@@ -289,17 +289,12 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#nnf">NNF</a></li>
-    <li><a href="#dnnf">DNNF</a></li>
-    <li><a href="#dnnf-1">dNNF</a></li>
-    <li><a href="#snnf">sNNF</a></li>
-    <li><a href="#d-dnnf">d-DNNF</a></li>
-    <li><a href="#sd-dnnf">sd-DNNF</a></li>
-    <li><a href="#f-nnf">f-NNF</a></li>
-    <li><a href="#pi">PI</a></li>
-    <li><a href="#bdd">BDD</a></li>
-    <li><a href="#fbdd">FBDD</a></li>
-    <li><a href="#obdd">OBDD</a></li>
+    <li><a href="#decision-tree">Decision Tree</a>
+      <ol>
+        <li><a href="#id3算法">ID3算法</a></li>
+        <li><a href="#heading"></a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -314,13 +309,13 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/nnf-review-notes-updating.../">
-                <img src="/p/nnf-review-notes-updating.../NNF_hu14edb053461a8e06e4f1fdca463dbb61_2574_800x0_resize_box_3.png"
-                        srcset="/p/nnf-review-notes-updating.../NNF_hu14edb053461a8e06e4f1fdca463dbb61_2574_800x0_resize_box_3.png 800w, /p/nnf-review-notes-updating.../NNF_hu14edb053461a8e06e4f1fdca463dbb61_2574_1600x0_resize_box_3.png 1600w"
+            <a href="/p/classification-review-notes-updating.../">
+                <img src="/p/classification-review-notes-updating.../classification_hu4fc43e2b18ace3d44063bbef11699032_4250_800x0_resize_box_3.png"
+                        srcset="/p/classification-review-notes-updating.../classification_hu4fc43e2b18ace3d44063bbef11699032_4250_800x0_resize_box_3.png 800w, /p/classification-review-notes-updating.../classification_hu4fc43e2b18ace3d44063bbef11699032_4250_1600x0_resize_box_3.png 1600w"
                         width="800" 
-                        height="408" 
+                        height="709" 
                         loading="lazy"
-                        alt="Featured image of post NNF review notes (updating...)" />
+                        alt="Featured image of post Classification review notes (updating...)" />
                 
             </a>
         </div>
@@ -339,12 +334,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/nnf-review-notes-updating.../">NNF review notes (updating...)</a>
+            <a href="/p/classification-review-notes-updating.../">Classification review notes (updating...)</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            One of notes of CS264 about NNF
+            One of notes of CS245
         </h3>
         
     </div>
@@ -365,7 +360,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Oct 28, 2023</time>
+                <time class="article-time--published">Oct 30, 2023</time>
             </div>
         
 
@@ -395,123 +390,37 @@
     <section class="article-content">
     
     
-    <h1 id="nnf-和-对应拓展性质">NNF 和 对应拓展性质</h1>
-<p><img src="/p/nnf-review-notes-updating.../graph.png"
-	width="2552"
-	height="1432"
-	srcset="/p/nnf-review-notes-updating.../graph_hue809ba37d1bd8bc2d34f0900f49d9d9a_893207_480x0_resize_box_3.png 480w, /p/nnf-review-notes-updating.../graph_hue809ba37d1bd8bc2d34f0900f49d9d9a_893207_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="178"
-		data-flex-basis="427px"
-	
-></p>
-<h2 id="nnf">NNF</h2>
+    <h1 id="classification">Classification</h1>
+<h2 id="decision-tree">Decision Tree</h2>
 <ul>
-<li>输入为variable以及variable的否定，由与或门组成的逻辑网络</li>
-<li>这是一种最常见的逻辑网络，我们没办法做什么</li>
+<li>决策树最主要的就是构建决策树，构建决策树有以下几种著名的算法。</li>
 </ul>
-<h2 id="dnnf">DNNF</h2>
+<h3 id="id3算法">ID3算法</h3>
 <ul>
-<li>在NNF的基础上，要求每一个and节点的任意两个分支所涉及的节点交集为空（no overlap）</li>
-<li>在这个网络上，NNF的可行性可以被简单地验证</li>
-<li>我们可以在多项式时间内执行：CO, CE, ME这三个任务</li>
+<li>ID3算法是一种基于信息熵的算法。</li>
+<li>通过信息增益找到可以最合适的划分属性。</li>
 </ul>
 <blockquote>
-<p>任务汇总：<br>
-CO: consistency<br>
-VA: Validity<br>
-SE: sentential entailment<br>
-<strong>CE: clausal entailment(KB implies clause)</strong><br>
-IP: implicant testing(term implies KB)<br>
-EQ: equivalence testing<br>
-CT: model countig<br>
-ME: model enumeration</p>
+<p>Gain(S, A) = E(S) - E(S|A)<br>
+E(S|A) = - sum(|S_i|/|S| * E(S_1))</p>
 </blockquote>
 <ul>
-<li>DNNF能够在线性时间内完成clause entailment</li>
-</ul>
-<blockquote>
-<p>如果一个NNF子图能够在线性时间内完成clause entailment，我们称之为tractable。DNNF是tractable的。</p>
-</blockquote>
-<h2 id="dnnf-1">dNNF</h2>
+<li>计算所有的属性对应的信息增益，选择信息增益最大的属性对数据集进行划分。</li>
+<li>递归地对之后的数据集进行划分直到：
 <ul>
-<li>在NNF的基础上，要求每一个or节点的任意两个分支的输入之间互斥</li>
-</ul>
-<blockquote>
-<p>E.g.  $(\neg A \land B) \lor (A \land \neg B)$ 就是互斥的</p>
-</blockquote>
-<ul>
-<li>这意味着无论你怎么取值，or节点的不可能有两个输入同时为true</li>
-<li>dNNF不是tractable的</li>
-</ul>
-<h2 id="snnf">sNNF</h2>
-<ul>
-<li>&ldquo;smoothness&rdquo;，在NNF的基础上，要求每一个or节点的任意两个分支所涉及的参数必须相同。</li>
-<li>sNNF不是tractable的。</li>
-</ul>
-<h2 id="d-dnnf">d-DNNF</h2>
-<ul>
-<li>顾名思义，同时满足dNNF和DNNF。</li>
-<li>d-DNNF是tractable的。</li>
-<li>d-DNNF可以在多项式时间内实现VA， IP， CT任务。</li>
-</ul>
-<h2 id="sd-dnnf">sd-DNNF</h2>
-<ul>
-<li>同时满足dNNF和DNNF和sNNF</li>
-<li>tractable。</li>
-</ul>
-<h2 id="f-nnf">f-NNF</h2>
-<ul>
-<li>flatness or shallow circuit</li>
-<li>满足性质：网络仅仅只有两层</li>
-<li>Simple conjunction：由or-and-variable组成，且每个and下的variable均各不相同，我们可以将这种网络改写为DNF形式。</li>
-<li>Simple conjunction同时满足decomposity性质。</li>
-<li>Simple disjunction，CNF，同上。</li>
-<li>f-NNF和CNF不是tractable。但是DNF是tractable的。</li>
-</ul>
-<h2 id="pi">PI</h2>
-<ul>
-<li>prime Implicates, 是一种特殊的CNF，要求CNF满足：
-<ul>
-<li>没有一个clause是其他clause的子集（都是有用的clause）</li>
-<li>如果可以进行resolution，那么resolution的结果一定本来就可以被其中某个clause imply。</li>
+<li>只剩一个属性无法继续划分</li>
+<li>所有的属性信息增益都很小</li>
 </ul>
 </li>
-<li>DNF的版本称之为IP</li>
-<li>PI来自于CNF， 可以在多项式时间内解决CO, CE, ME, VA, IP, SE, EQ问题</li>
-<li>IP来自于DNF，可以额外在多项式时间内解决VA, IP, SE, EQ问题。</li>
 </ul>
-<h2 id="bdd">BDD</h2>
+<p>缺点：</p>
 <ul>
-<li>decision graph： variable的取值由其parent决定。</li>
-<li>同时还是decomposition。</li>
+<li>无剪枝策略，容易过拟合；</li>
+<li>只能用于处理离散分布的特征；</li>
+<li>没有考虑缺失值。</li>
+<li>信息增益准则对可取值数目较多的特征有所偏好，类似“编号”的特征其信息增益接近于 1，而信息增益比指数可以解决此缺点。</li>
 </ul>
-<h2 id="fbdd">FBDD</h2>
-<ul>
-<li>test one property：从任何一条根节点到叶子节点的路径上，每一个variable都只能出现一次</li>
-<li>是在d-DNNF和BDD的基础上的，因此他可以在多项式时间内解决七个问题。</li>
-</ul>
-<h2 id="obdd">OBDD</h2>
-<ul>
-<li>在任意从根节点到叶子节点的路径上，都满足同一variable的顺序</li>
-<li>decision decomposability order</li>
-<li>可以在多项式时间内完成SE， EQ任务，因此它在多项式时间内可以完成所有的任务。</li>
-</ul>
-<h1 id="dnnf详解">DNNF详解</h1>
-<blockquote>
-<p>transformation operation:<br>
-CD: conditioning.<br>
-SFO: single variable.<br>
-FO: multiple variable.<br>
-&amp;: conjunction.<br>
-B&amp;: bounded conjoin.<br>
-|: disjoin.<br>
-B|: bounded disjoin.<br>
-~: negate</p>
-</blockquote>
+<h3 id="heading"></h3>
 
 </section>
 
@@ -520,13 +429,11 @@ B|: bounded disjoin.<br>
     
     <section class="article-tags">
         
-            <a href="/tags/automatic-reasoning/">Automatic Reasoning</a>
+            <a href="/tags/data-analysis/">Data analysis</a>
         
             <a href="/tags/ucla-course-note/">UCLA Course Note</a>
         
-            <a href="/tags/nnf/">NNF</a>
-        
-            <a href="/tags/cnnf/">CNNF</a>
+            <a href="/tags/classification/">Classification</a>
         
     </section>
 
@@ -560,30 +467,6 @@ B|: bounded disjoin.<br>
             
                 
 <article class="has-image">
-    <a href="/p/classification-review-notes-updating.../">
-        
-        
-            <div class="article-image">
-                <img src="/p/classification-review-notes-updating.../classification.875924b135fddc1e6984f2fe76e4832a_hu4fc43e2b18ace3d44063bbef11699032_4250_250x150_fill_box_smart1_3.png" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post Classification review notes (updating...)"
-                        
-                        data-hash="md5-h1kksTX93B5phPL&#43;duSDKg==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Classification review notes (updating...)</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
     <a href="/p/cluster-review-notes-updating.../">
         
         
@@ -601,6 +484,30 @@ B|: bounded disjoin.<br>
 
         <div class="article-details">
             <h2 class="article-title">Cluster review notes (updating...)</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/nnf-review-notes-updating.../">
+        
+        
+            <div class="article-image">
+                <img src="/p/nnf-review-notes-updating.../NNF.9b11e8f5662ff08c11f4b4ee82e2871c_hu14edb053461a8e06e4f1fdca463dbb61_2574_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post NNF review notes (updating...)"
+                        
+                        data-hash="md5-mxHo9WYv8IwR9LTuguKHHA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">NNF review notes (updating...)</h2>
         </div>
     </a>
 </article>

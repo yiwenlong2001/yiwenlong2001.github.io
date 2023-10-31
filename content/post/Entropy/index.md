@@ -9,7 +9,6 @@ tags:
     - Entropy
 categories:
     - project
-weight: 4
 ---
 
 <center><embed src="Information_Entropy.pdf" width="850" height="2600"></center>

@@ -6,7 +6,46 @@
         <description>Recent content in Data analysis on Wenlong Yi (Evan)</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Thu, 26 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yiwenlong2001.github.io/tags/data-analysis/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 30 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yiwenlong2001.github.io/tags/data-analysis/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Classification review notes (updating...)</title>
+        <link>https://yiwenlong2001.github.io/p/classification-review-notes-updating.../</link>
+        <pubDate>Mon, 30 Oct 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://yiwenlong2001.github.io/p/classification-review-notes-updating.../</guid>
+        <description>&lt;img src="https://yiwenlong2001.github.io/p/classification-review-notes-updating.../classification.png" alt="Featured image of post Classification review notes (updating...)" /&gt;&lt;h1 id=&#34;classification&#34;&gt;Classification&lt;/h1&gt;
+&lt;h2 id=&#34;decision-tree&#34;&gt;Decision Tree&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;决策树最主要的就是构建决策树，构建决策树有以下几种著名的算法。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;id3算法&#34;&gt;ID3算法&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;ID3算法是一种基于信息熵的算法。&lt;/li&gt;
+&lt;li&gt;通过信息增益找到可以最合适的划分属性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Gain(S, A) = E(S) - E(S|A)&lt;br&gt;
+E(S|A) = - sum(|S_i|/|S| * E(S_1))&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;计算所有的属性对应的信息增益，选择信息增益最大的属性对数据集进行划分。&lt;/li&gt;
+&lt;li&gt;递归地对之后的数据集进行划分直到：
+&lt;ul&gt;
+&lt;li&gt;只剩一个属性无法继续划分&lt;/li&gt;
+&lt;li&gt;所有的属性信息增益都很小&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;缺点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;无剪枝策略，容易过拟合；&lt;/li&gt;
+&lt;li&gt;只能用于处理离散分布的特征；&lt;/li&gt;
+&lt;li&gt;没有考虑缺失值。&lt;/li&gt;
+&lt;li&gt;信息增益准则对可取值数目较多的特征有所偏好，类似“编号”的特征其信息增益接近于 1，而信息增益比指数可以解决此缺点。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;heading&#34;&gt;&lt;/h3&gt;
+</description>
+        </item>
+        <item>
         <title>Cluster review notes (updating...)</title>
         <link>https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../</link>
         <pubDate>Thu, 26 Oct 2023 00:00:00 +0000</pubDate>
