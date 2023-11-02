@@ -18,10 +18,7 @@
 &lt;li&gt;决策树最主要的就是构建决策树，构建决策树有以下几种著名的算法。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;id3算法&#34;&gt;ID3算法&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;ID3算法是一种基于信息熵的算法。&lt;/li&gt;
-&lt;li&gt;通过信息增益找到可以最合适的划分属性。&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;ID3算法是一种基于信息熵的算法。通过信息增益找到可以最合适的划分属性。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Gain(S, A) = E(S) - E(S|A)&lt;br&gt;
 E(S|A) = - sum(|S_i|/|S| * E(S_1))&lt;/p&gt;
@@ -42,7 +39,25 @@ E(S|A) = - sum(|S_i|/|S| * E(S_1))&lt;/p&gt;
 &lt;li&gt;没有考虑缺失值。&lt;/li&gt;
 &lt;li&gt;信息增益准则对可取值数目较多的特征有所偏好，类似“编号”的特征其信息增益接近于 1，而信息增益比指数可以解决此缺点。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;heading&#34;&gt;&lt;/h3&gt;
+&lt;p&gt;为了解决这些问题，提出这些改进：&lt;/p&gt;
+&lt;h3 id=&#34;gain-ratio&#34;&gt;Gain ratio&lt;/h3&gt;
+&lt;p&gt;$ SplitInformation = \sum_{i=1}^{c} \frac{|S_i|}{|S|} log_2 \frac{|S_i|}{|S|} $
+$ GainRatio(S, A) = \frac{Gain(S, A)}{SplitInformatio(S, A)} $&lt;/p&gt;
+&lt;h3 id=&#34;gini-index&#34;&gt;Gini Index&lt;/h3&gt;
+&lt;p&gt;如果一个数据集有n各种类的数据，那么gini index被定义为
+$$ gini(T) = 1 - \sum_{j=1}^n p_j^2$$
+其中$ p_j $是种类j再数据集中的频繁程度&lt;/p&gt;
+&lt;p&gt;假如我们将数据集T分为大小分别为N1和N2的两个子集T1和T2， 那么此次分割中：
+$$ gini_{split}(T) = \frac{N_1}{N} gini(T_1) + \frac{N_2}{N} gini(T_2) $$&lt;/p&gt;
+&lt;p&gt;在各种分割中，选择$ gini_{split}(T) $最小的分法。&lt;/p&gt;
+&lt;h3 id=&#34;过拟合&#34;&gt;过拟合&lt;/h3&gt;
+&lt;p&gt;针对过拟合可以采用以下两种方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Prepruning: Halt tree construction early—do not split a node if this would result in the goodness measure falling below a threshold&lt;/li&gt;
+&lt;li&gt;Postpruning: Remove branches from a “fully grown” tree—get a sequence of progressively pruned trees&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;确定树的大小：使用MDL原则&lt;/p&gt;
+&lt;h2 id=&#34;贝叶斯网络&#34;&gt;贝叶斯网络&lt;/h2&gt;
 </description>
         </item>
         <item>
