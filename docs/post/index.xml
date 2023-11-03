@@ -94,6 +94,42 @@ $$ gini_{split}(T) = \frac{N_1}{N} gini(T_1) + \frac{N_2}{N} gini(T_2) $$&lt;/p&
 &lt;/ul&gt;
 &lt;p&gt;确定树的大小：使用MDL原则&lt;/p&gt;
 &lt;h2 id=&#34;贝叶斯网络&#34;&gt;贝叶斯网络&lt;/h2&gt;
+&lt;p&gt;贝叶斯定理：&lt;br&gt;
+given training data x, posteriori probability of a hypothesis H, P(H|X) is $ P(H|X) = \frac{P(X|H) * P(H)}{P(X)} $&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;P(H|X) Posterior probability is the updates probability after the evidence is considered.&lt;/li&gt;
+&lt;li&gt;P(X|H) Likelihood probability&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;naive-bayesian-classifier&#34;&gt;naive bayesian classifier&lt;/h3&gt;
+&lt;p&gt;&amp;ldquo;naive&amp;rdquo; means it assumes class conditional independence.&lt;/p&gt;
+&lt;p&gt;Example:&lt;br&gt;
+P(buy = yes | age &amp;lt;= 30, income = high, student = no).&lt;br&gt;
+Apply Bayes&amp;rsquo;s. theorem:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;P(B=Y|A&amp;lt;=30, I=H, S=N) = P(B=Y) * P(A&amp;lt;=30, I=H, S=N | B=Y) / P(A&amp;lt;=30, I=H, S=N)&lt;/li&gt;
+&lt;li&gt;其中P(B=Y)直接从数据中得到&lt;/li&gt;
+&lt;li&gt;P(A&amp;lt;=30, I=H, S=N | B=Y)由于独立性可以分解为：P(A&amp;lt;=30 | B=Y) * P(I=H | B=Y) * P(S=N | B=Y)，这三个可以直接从数据中count得到&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;bayesian-network&#34;&gt;Bayesian Network&lt;/h3&gt;
+&lt;p&gt;No longer independent!&lt;br&gt;
+consider: Causal relation (depending relationship) instead.&lt;/p&gt;
+&lt;p&gt;Conditional Independent:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;S and R is not independent.&lt;/li&gt;
+&lt;li&gt;S given C and R given C is independent!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;for a struction like that:&lt;br&gt;
+C&lt;br&gt;
+S  R&lt;br&gt;
+W&lt;br&gt;
+we can construct P(C, S, R, W) = P(W|S, R) * P(R|C) * P(S|C) * P(C)&lt;/p&gt;
+&lt;p&gt;Inference: Bottom up.&lt;br&gt;
+First we calculate P(W=T)
+$$ \sum_{c,s,r} P(C=c, S=s, R=r, W=T)$$
+and for two possible reason S and R
+P(S|R) = P(S, R) / P(R)&lt;/p&gt;
+&lt;p&gt;Inference: Top down
+The probability that W=T given that C = T&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -372,6 +408,22 @@ SS: sum of the square of the position&lt;/p&gt;
         
         <guid>https://yiwenlong2001.github.io/p/proof-of-uniqueness-of-the-entropy-formula/</guid>
         <description>&lt;img src="https://yiwenlong2001.github.io/p/proof-of-uniqueness-of-the-entropy-formula/entropy.jpg" alt="Featured image of post Proof of uniqueness of the entropy formula" /&gt;&lt;center&gt;&lt;embed src=&#34;Information_Entropy.pdf&#34; width=&#34;850&#34; height=&#34;2600&#34;&gt;&lt;/center&gt;</description>
+        </item>
+        <item>
+        <title>Tree Mining review notes (updating...)</title>
+        <link>https://yiwenlong2001.github.io/p/tree-mining-review-notes-updating.../</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://yiwenlong2001.github.io/p/tree-mining-review-notes-updating.../</guid>
+        <description>&lt;h1 id=&#34;tree-mining&#34;&gt;Tree Mining&lt;/h1&gt;
+&lt;p&gt;Goal: 给定一个tree的数据库和minimal support，找出所有的频繁子树&lt;/p&gt;
+&lt;p&gt;Subtrees: induced and embedded Subtrees&lt;/p&gt;
+&lt;p&gt;Apriori-style Tree Mining:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;(x, i): x is the label of the node, and i is the unique identifier of occurence.&lt;/li&gt;
+&lt;li&gt;L(x): set of occurence of pattern.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
         </item>
         
     </channel>

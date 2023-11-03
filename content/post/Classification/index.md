@@ -64,3 +64,46 @@ $$ gini_{split}(T) = \frac{N_1}{N} gini(T_1) + \frac{N_2}{N} gini(T_2) $$
 确定树的大小：使用MDL原则
 
 ## 贝叶斯网络
+
+贝叶斯定理：  
+given training data x, posteriori probability of a hypothesis H, P(H|X) is $ P(H|X) = \frac{P(X|H) * P(H)}{P(X)} $
+
+- P(H|X) Posterior probability is the updates probability after the evidence is considered.
+- P(X|H) Likelihood probability
+
+### naive bayesian classifier
+
+"naive" means it assumes class conditional independence.
+
+Example:  
+P(buy = yes | age <= 30, income = high, student = no).   
+Apply Bayes's. theorem:
+
+- P(B=Y|A<=30, I=H, S=N) = P(B=Y) * P(A<=30, I=H, S=N | B=Y) / P(A<=30, I=H, S=N)
+- 其中P(B=Y)直接从数据中得到
+- P(A<=30, I=H, S=N | B=Y)由于独立性可以分解为：P(A<=30 | B=Y) * P(I=H | B=Y) * P(S=N | B=Y)，这三个可以直接从数据中count得到
+
+### Bayesian Network
+
+No longer independent!  
+consider: Causal relation (depending relationship) instead.  
+
+Conditional Independent:  
+
+- S and R is not independent.
+- S given C and R given C is independent!
+
+for a struction like that:  
+C   
+S  R  
+W  
+we can construct P(C, S, R, W) = P(W|S, R) * P(R|C) * P(S|C) * P(C)
+
+Inference: Bottom up.  
+First we calculate P(W=T)
+$$ \sum_{c,s,r} P(C=c, S=s, R=r, W=T)$$
+and for two possible reason S and R
+P(S|R) = P(S, R) / P(R)
+
+Inference: Top down
+The probability that W=T given that C = T
