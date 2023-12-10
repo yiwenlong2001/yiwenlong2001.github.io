@@ -129,6 +129,11 @@ B&amp;amp;: bounded conjoin.&lt;br&gt;
 B|: bounded disjoin.&lt;br&gt;
 ~: negate&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;h1 id=&#34;sentrntial-decision-diagram&#34;&gt;Sentrntial decision diagram&lt;/h1&gt;
+&lt;p&gt;OBDD is influential. &lt;br&gt;
+SDD: Branch on sentences.&lt;br&gt;
+p1, p2, p3 are called primes.&lt;br&gt;
+s1, s2, s3 are called subs.&lt;/p&gt;
 </description>
         </item>
         

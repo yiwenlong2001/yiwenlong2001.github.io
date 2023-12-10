@@ -255,6 +255,11 @@ B&amp;amp;: bounded conjoin.&lt;br&gt;
 B|: bounded disjoin.&lt;br&gt;
 ~: negate&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;h1 id=&#34;sentrntial-decision-diagram&#34;&gt;Sentrntial decision diagram&lt;/h1&gt;
+&lt;p&gt;OBDD is influential. &lt;br&gt;
+SDD: Branch on sentences.&lt;br&gt;
+p1, p2, p3 are called primes.&lt;br&gt;
+s1, s2, s3 are called subs.&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -410,19 +415,199 @@ SS: sum of the square of the position&lt;/p&gt;
         <description>&lt;img src="https://yiwenlong2001.github.io/p/proof-of-uniqueness-of-the-entropy-formula/entropy.jpg" alt="Featured image of post Proof of uniqueness of the entropy formula" /&gt;&lt;center&gt;&lt;embed src=&#34;Information_Entropy.pdf&#34; width=&#34;850&#34; height=&#34;2600&#34;&gt;&lt;/center&gt;</description>
         </item>
         <item>
-        <title>Tree Mining review notes (updating...)</title>
-        <link>https://yiwenlong2001.github.io/p/tree-mining-review-notes-updating.../</link>
+        <title>CS264 review note (updating...)</title>
+        <link>https://yiwenlong2001.github.io/p/cs264-review-note-updating.../</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://yiwenlong2001.github.io/p/tree-mining-review-notes-updating.../</guid>
-        <description>&lt;h1 id=&#34;tree-mining&#34;&gt;Tree Mining&lt;/h1&gt;
-&lt;p&gt;Goal: 给定一个tree的数据库和minimal support，找出所有的频繁子树&lt;/p&gt;
-&lt;p&gt;Subtrees: induced and embedded Subtrees&lt;/p&gt;
-&lt;p&gt;Apriori-style Tree Mining:&lt;/p&gt;
+        <guid>https://yiwenlong2001.github.io/p/cs264-review-note-updating.../</guid>
+        <description>&lt;img src="https://yiwenlong2001.github.io/p/cs264-review-note-updating.../NNF.png" alt="Featured image of post CS264 review note (updating...)" /&gt;&lt;p&gt;We will start from SDD. And previous content will be posted later.&lt;/p&gt;
+&lt;h1 id=&#34;sdd&#34;&gt;SDD&lt;/h1&gt;
+&lt;p&gt;SDD is a kind of OBDD, which means the order of variable is needed in such circuit. And SDD is unique when canonical / reduced.&lt;/p&gt;
+&lt;h2 id=&#34;structured-decomposability&#34;&gt;Structured Decomposability&lt;/h2&gt;
+&lt;p&gt;Decomposability:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;f(ABCD) = $(g_1(AB) \land h_1(CD)) \lor (g_2(A) \land h2(BCD)) \lor &amp;hellip;$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Structured Decomposability:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;f(ABCD) = $(g_1(AB) \land h_1(CD)) \lor (g_2(AB) \land h2(CD)) \lor &amp;hellip;$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The difference between these two kinds of decomposability is whether variables split in the same way in each subfunction.&lt;/p&gt;
+&lt;p&gt;Definition of Structured Decomposability:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A (X,Y)-partition of a function f goes like:
+$$f(X, Y) = g_1(X)h_1(Y) + &amp;hellip; + g_n(X)h_n(Y)$$
+Where $X \land Y = \empty$ and $X \lor Y$ = all variables in f.&lt;br&gt;
+$g_i$ regarding X is called a prime and $h_i$ regarding Y is called a sub, which requires that:&lt;br&gt;
+$$ \forall i, j, \ g_i \land g_j = False $$
+$$g_1 \lor g_2 &amp;hellip;\lor g_i = True$$
+$$\forall i, \ g_i \neq False $$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A (X,Y)-partition is compressed if there is no equal subs. That is,
+$$h_i \neq h_j\ \ \  \forall i \neq j$$&lt;/p&gt;
+&lt;h2 id=&#34;vtree&#34;&gt;Vtree&lt;/h2&gt;
+&lt;p&gt;Vtree is a binary tree that denotes the order and the structure of a SDD. Each node’s left branch refers to the element in the primes, and each node’s right branch refers to that of the subs.&lt;/p&gt;
+&lt;p&gt;OBDD is a special case of SDD with right-linear a vtree, whose left branch is always a leaf.&lt;/p&gt;
+&lt;p&gt;SDD is a strict superset of OBDD, maintaining key properties of OBDD b, and could be exponentially smaller than OBDD.&lt;/p&gt;
+&lt;h2 id=&#34;building-a-sdd&#34;&gt;Building a SDD&lt;/h2&gt;
+&lt;p&gt;For example, we have $f = (A \land B) \lor (B \land C) \lor (C \land D)$ and X = {A, B}, Y = {C, D}.&lt;/p&gt;
+&lt;p&gt;Then we can have the sub-functions (subs) as condi-
+tioned on the primes:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;prime&lt;/th&gt;
+&lt;th&gt;sub&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;$A \land B$&lt;/td&gt;
+&lt;td&gt;True&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$A \land \neg B$&lt;/td&gt;
+&lt;td&gt;$C \land D$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\neg A \land B$&lt;/td&gt;
+&lt;td&gt;C&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\neg A \land \neg B$&lt;/td&gt;
+&lt;td&gt;$C \land D$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Resolving the primes with the same sub, to conduct compression:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;prime&lt;/th&gt;
+&lt;th&gt;sub&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;$A \land B$&lt;/td&gt;
+&lt;td&gt;True&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\neg B$&lt;/td&gt;
+&lt;td&gt;$C \land D$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;$\neg A \land B$&lt;/td&gt;
+&lt;td&gt;C&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Then we could have f = ($A \land B$)(True) + ($\neg A \land B$)(C) + ($\neg B$)($C \land D$)&lt;/p&gt;
+&lt;p&gt;For Vtree, if X and Y are fixed, the leaves under the left branch of the root has to contain and only contain variables belong to X, and right branch for Y. For intermediate nodes (neither leave nor root), do the same recursively.&lt;/p&gt;
+&lt;p&gt;Then we can construct the SDD according to the Vtree and f.&lt;/p&gt;
+&lt;p&gt;Each node consists of a head and a tail; for either a head or a tail, if it involves more than one variable (a.k.a representing an intermediate node in the vtree), we need to decompose it again (according to its left-right branches in the vtree).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Most importantly&lt;/strong&gt;: I have made this mistake in my Homework. After you constructing the SDD, you need to check whether this SDD can be reduced, that is, whether there are some node that are just the same. You need to combine these nodes.&lt;/p&gt;
+&lt;h2 id=&#34;polytiom-operation&#34;&gt;Polytiom Operation&lt;/h2&gt;
+&lt;p&gt;if you have two (X,Y)-partition like:
+$$f: (p_1, q_1) &amp;hellip; (p_n, q_n)$$
+$$g: (r_1, s_1) &amp;hellip; (r_m, s_m)$$
+Then for any logic operator &amp;amp;, we have:
+$$f\  &amp;amp; \ g : (p_i \land r_j, q_i\  &amp;amp; \ s_j), \forall i, j, p_i \land r_j \neq False$$&lt;/p&gt;
+&lt;h2 id=&#34;bottom-up-compliation-for-obddsdd&#34;&gt;Bottom-Up Compliation for OBDD/SDD&lt;/h2&gt;
+&lt;p&gt;If we want to compile a CNF:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;First, we comstruct OBDD/SDD for literals.&lt;br&gt;
+Then, combine literals into clause.&lt;br&gt;
+Finally, combine all the literals into CNF.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Also works for DNF.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://yiwenlong2001.github.io/Bottom-up%20complie.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;canonicity-in-compilation&#34;&gt;Canonicity in Compilation&lt;/h2&gt;
+&lt;p&gt;fixed variable order -&amp;gt; unique reduced OBDD
+fixed vtree -&amp;gt; unique trimmed &amp;amp; compressed SDD&lt;/p&gt;
+&lt;p&gt;However, if we have n variable, then we can have n! kinds of variable order. Then we also have $C_{n-1}$ kinds of dissections(prime and sub). Then we will have:
+$$n!\ *\ C_{n-1} = \frac{(2(n-1))!}{(n-1)!}$$
+kinds of vtree in total.&lt;/p&gt;
+&lt;h2 id=&#34;operation-on-vtree&#34;&gt;Operation on vtree&lt;/h2&gt;
+&lt;p&gt;Tree rotate.
+&lt;img src=&#34;https://yiwenlong2001.github.io/tree_rotate.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Tree swap.
+&lt;img src=&#34;https://yiwenlong2001.github.io/tree_swap.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Search over vtree&lt;/p&gt;
+&lt;p&gt;We would use greedy search to enumerate all the vtrees. First, we enumerate all vtree over a window, that is, all the vtrees that can be reachable via a certain amount of rotate/swap operations. Then we greedily accept the best vtree that has been found, and then move window.&lt;/p&gt;
+&lt;h1 id=&#34;psdd&#34;&gt;PSDD&lt;/h1&gt;
+&lt;p&gt;probability space -&amp;gt; the truth table -&amp;gt; (world, instantiation, 1/0)&lt;/p&gt;
+&lt;p&gt;SDD -&amp;gt; Tractable Boolean Circuit&lt;/p&gt;
+&lt;p&gt;PSDD -&amp;gt; probabilistic -&amp;gt; (world, instantiation, Pr())&lt;/p&gt;
+&lt;h2 id=&#34;from-sdd-to-psdd&#34;&gt;From SDD to PSDD&lt;/h2&gt;
+&lt;p&gt;PSDD, compared to SDD, is almost the same, except that:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;(x, i): x is the label of the node, and i is the unique identifier of occurence.&lt;/li&gt;
-&lt;li&gt;L(x): set of occurence of pattern.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;OR-gates: having probability distributions over all inputs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Any two OR-gates may have di↵erent probability distributions.&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;The AND-gates are just kept the same and no pro- bability applies.&lt;/p&gt;
+&lt;h2 id=&#34;calculating-rule&#34;&gt;Calculating rule&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://yiwenlong2001.github.io/PSDD.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;If we have an input like L, K, P, A, and we need to calculate the probability of this world. We can do following sequencely.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Firstly, we check bottom up. Find all leaves that statisfy the input. For or gate, we continue if one of its branch is selected, and for and gate, we continue only if all its branchs are selected.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Then, we calculate top down. From the top gate, for or gate, we add all its selected branch, and for and gate, we multiply all its branches.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For example, in the above figure, we can have:
+$$Pr(L, K, P, A) = 0.3 * 1.0 * 0.8 * 0.4 * 0.25$$&lt;/p&gt;
+&lt;p&gt;If our input does not contain all the literals, for example: L, P, A. Then we still could follow the above-mentioned steps and we can have:
+$$Pr(L, P, A) = 0.3 * 1.0 * 1.0 * 0.4 * 0.25$$&lt;/p&gt;
+&lt;h1 id=&#34;prime-implicate-and-prime-implicant&#34;&gt;Prime Implicate and Prime Implicant&lt;/h1&gt;
+&lt;p&gt;Firstly, in this section, we denote $\Delta$ as the knowledge base.&lt;/p&gt;
+&lt;p&gt;Most importantly, we denote prime Implicate (CNF) as PI and prime implicant (DNF) as IP.&lt;/p&gt;
+&lt;p&gt;PI: CNF that contains no subsumed clauses.&lt;br&gt;
+IP: DNF that contains no subsumed terms.&lt;/p&gt;
+&lt;p&gt;To obtain PI: close $\Delta$ under resolution then drop subsumed clauses.&lt;br&gt;
+To obtain IP: close $\Delta$ under consensus then drop subsumed terms.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;P.S. remember! When you are doing resolution/consensus, you can only invlove one literal, that is, you can not do resolution on (A, B, C) and (A, $\neg B$, $\neg C$).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Subsume: all-literals already contained.&lt;br&gt;
+Clause: c1 subsumes c2 -&amp;gt; c1 is shorter than c2 -&amp;gt; c1 entails c2.&lt;br&gt;
+terms: t1 subsumes t2 -&amp;gt; t1 is shorter than t2 -&amp;gt; t2 entail t1.&lt;/p&gt;
+&lt;p&gt;Duality: $\alpha$ is PI of $\Delta$, then $\neg \alpha$ is IP of $\neg \Delta$.&lt;/p&gt;
+&lt;h1 id=&#34;model-based-diagnosis&#34;&gt;Model-based Diagnosis&lt;/h1&gt;
 </description>
         </item>
         

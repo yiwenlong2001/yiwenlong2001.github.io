@@ -112,4 +112,11 @@ categories:
 > B|: bounded disjoin.  
 > ~: negate
 
+# Sentrntial decision diagram
+
+OBDD is influential.    
+SDD: Branch on sentences.  
+p1, p2, p3 are called primes.  
+s1, s2, s3 are called subs.
+
 

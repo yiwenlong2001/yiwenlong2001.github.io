@@ -223,22 +223,6 @@ SS: sum of the square of the position&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
         </item>
-        <item>
-        <title>Tree Mining review notes (updating...)</title>
-        <link>https://yiwenlong2001.github.io/p/tree-mining-review-notes-updating.../</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://yiwenlong2001.github.io/p/tree-mining-review-notes-updating.../</guid>
-        <description>&lt;h1 id=&#34;tree-mining&#34;&gt;Tree Mining&lt;/h1&gt;
-&lt;p&gt;Goal: 给定一个tree的数据库和minimal support，找出所有的频繁子树&lt;/p&gt;
-&lt;p&gt;Subtrees: induced and embedded Subtrees&lt;/p&gt;
-&lt;p&gt;Apriori-style Tree Mining:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;(x, i): x is the label of the node, and i is the unique identifier of occurence.&lt;/li&gt;
-&lt;li&gt;L(x): set of occurence of pattern.&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        </item>
         
     </channel>
 </rss>

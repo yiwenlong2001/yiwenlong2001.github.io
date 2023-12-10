@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='One of notes of CS245'>
-<title>Cluster review notes (updating...)</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Review note for UCLA CS264 Automatic Reasoning'>
+<title>CS264 review note (updating...)</title>
 
-<link rel='canonical' href='https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../'>
+<link rel='canonical' href='https://yiwenlong2001.github.io/p/cs264-review-note-updating.../'>
 
-<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='Cluster review notes (updating...)'>
-<meta property='og:description' content='One of notes of CS245'>
-<meta property='og:url' content='https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../'>
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='CS264 review note (updating...)'>
+<meta property='og:description' content='Review note for UCLA CS264 Automatic Reasoning'>
+<meta property='og:url' content='https://yiwenlong2001.github.io/p/cs264-review-note-updating.../'>
 <meta property='og:site_name' content='Wenlong Yi (Evan)'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Data analysis' /><meta property='article:tag' content='UCLA Course Note' /><meta property='article:tag' content='Cluster' /><meta property='article:published_time' content='2023-10-26T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-10-26T00:00:00&#43;00:00'/><meta property='og:image' content='https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../cluster.jpg' />
-<meta name="twitter:title" content="Cluster review notes (updating...)">
-<meta name="twitter:description" content="One of notes of CS245"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../cluster.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Automatic Reasoning' /><meta property='article:tag' content='UCLA Course Note' /><meta property='og:image' content='https://yiwenlong2001.github.io/p/cs264-review-note-updating.../NNF.png' />
+<meta name="twitter:title" content="CS264 review note (updating...)">
+<meta name="twitter:description" content="Review note for UCLA CS264 Automatic Reasoning"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://yiwenlong2001.github.io/p/cs264-review-note-updating.../NNF.png' />
     <link rel="shortcut icon" href="/favicon.png" />
 
     </head>
@@ -289,23 +289,18 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#algorithm_1-k-means">Algorithm_1 K-means</a></li>
-    <li><a href="#algorithm_2-pam">Algorithm_2 PAM</a></li>
-    <li><a href="#algorithm_3-clara">Algorithm_3 CLARA</a></li>
-    <li><a href="#algorithm_4-hierarchical-clustering">Algorithm_4 Hierarchical Clustering</a>
-      <ol>
-        <li><a href="#agnes-agglomerative">AGNES (agglomerative)</a></li>
-        <li><a href="#diana-divisive">DIANA (divisive)</a></li>
-        <li><a href="#more-details">More Details</a></li>
-      </ol>
-    </li>
-    <li><a href="#algorithm_5-birch">Algorithm_5 BIRCH</a></li>
-    <li><a href="#algorithm_6-distance-based-methods">Algorithm_6 Distance-based Methods</a>
-      <ol>
-        <li><a href="#previous-knowledge">Previous Knowledge</a></li>
-        <li><a href="#dbscan">DBSCAN</a></li>
-      </ol>
-    </li>
+    <li><a href="#structured-decomposability">Structured Decomposability</a></li>
+    <li><a href="#vtree">Vtree</a></li>
+    <li><a href="#building-a-sdd">Building a SDD</a></li>
+    <li><a href="#polytiom-operation">Polytiom Operation</a></li>
+    <li><a href="#bottom-up-compliation-for-obddsdd">Bottom-Up Compliation for OBDD/SDD</a></li>
+    <li><a href="#canonicity-in-compilation">Canonicity in Compilation</a></li>
+    <li><a href="#operation-on-vtree">Operation on vtree</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#from-sdd-to-psdd">From SDD to PSDD</a></li>
+    <li><a href="#calculating-rule">Calculating rule</a></li>
   </ol>
 </nav>
         </div>
@@ -320,13 +315,13 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/cluster-review-notes-updating.../">
-                <img src="/p/cluster-review-notes-updating.../cluster_hu1f07f723625917ab4cca27f0b859a725_368923_800x0_resize_q75_box.jpg"
-                        srcset="/p/cluster-review-notes-updating.../cluster_hu1f07f723625917ab4cca27f0b859a725_368923_800x0_resize_q75_box.jpg 800w, /p/cluster-review-notes-updating.../cluster_hu1f07f723625917ab4cca27f0b859a725_368923_1600x0_resize_q75_box.jpg 1600w"
+            <a href="/p/cs264-review-note-updating.../">
+                <img src="/p/cs264-review-note-updating.../NNF_hu14edb053461a8e06e4f1fdca463dbb61_2574_800x0_resize_box_3.png"
+                        srcset="/p/cs264-review-note-updating.../NNF_hu14edb053461a8e06e4f1fdca463dbb61_2574_800x0_resize_box_3.png 800w, /p/cs264-review-note-updating.../NNF_hu14edb053461a8e06e4f1fdca463dbb61_2574_1600x0_resize_box_3.png 1600w"
                         width="800" 
-                        height="696" 
+                        height="408" 
                         loading="lazy"
-                        alt="Featured image of post Cluster review notes (updating...)" />
+                        alt="Featured image of post CS264 review note (updating...)" />
                 
             </a>
         </div>
@@ -345,12 +340,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/cluster-review-notes-updating.../">Cluster review notes (updating...)</a>
+            <a href="/p/cs264-review-note-updating.../">CS264 review note (updating...)</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            One of notes of CS245
+            Review note for UCLA CS264 Automatic Reasoning
         </h3>
         
     </div>
@@ -360,19 +355,6 @@
     
     
     <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Oct 26, 2023</time>
-            </div>
         
 
         
@@ -386,7 +368,7 @@
 
 
                 <time class="article-time--reading">
-                    2 minute read
+                    6 minute read
                 </time>
             </div>
         
@@ -401,125 +383,194 @@
     <section class="article-content">
     
     
-    <h1 id="cluster">Cluster</h1>
-<h2 id="algorithm_1-k-means">Algorithm_1 K-means</h2>
-<ul>
-<li>randomly choose initial cluster centroics.</li>
-<li>assign each point to its nearset centroic.</li>
-<li>do iteration until the location of any centroics does not change:
-<ul>
-<li>caluculate the mean value for every point of each cluster.</li>
-<li>relocate every point.</li>
-</ul>
-</li>
-</ul>
-<h2 id="algorithm_2-pam">Algorithm_2 PAM</h2>
-<ul>
-<li>Arbitrarily choose k objects as the initial medoids</li>
-<li>Until no change, do
-<ul>
-<li>(Re)assign each object to the cluster to which the nearest medoid</li>
-<li>Randomly select a non-medoid object o’, compute the total cost, S, of swapping medoid o with o’</li>
-<li>If S &lt; 0 then swap o with o’ to form the new set of k medoids</li>
-</ul>
-</li>
-</ul>
+    <p>We will start from SDD. And previous content will be posted later.</p>
+<h1 id="sdd">SDD</h1>
+<p>SDD is a kind of OBDD, which means the order of variable is needed in such circuit. And SDD is unique when canonical / reduced.</p>
+<h2 id="structured-decomposability">Structured Decomposability</h2>
+<p>Decomposability:</p>
 <blockquote>
-<p><strong>Swapping Cost:</strong> Measure whether o’ is better than o as a medoid</p>
+<p>f(ABCD) = $(g_1(AB) \land h_1(CD)) \lor (g_2(A) \land h2(BCD)) \lor &hellip;$</p>
 </blockquote>
-<h2 id="algorithm_3-clara">Algorithm_3 CLARA</h2>
-<ul>
-<li>random sample in huge data</li>
-<li>do PAM</li>
-</ul>
+<p>Structured Decomposability:</p>
 <blockquote>
-<p>PAM search the whole graph<br>
-CLARA search some random sub-graphs</p>
+<p>f(ABCD) = $(g_1(AB) \land h_1(CD)) \lor (g_2(AB) \land h2(CD)) \lor &hellip;$</p>
 </blockquote>
-<h2 id="algorithm_4-hierarchical-clustering">Algorithm_4 Hierarchical Clustering</h2>
-<h3 id="agnes-agglomerative">AGNES (agglomerative)</h3>
-<ul>
-<li>Initially, each object is a cluster</li>
-<li>Step-by-step cluster merging, until all objects form a cluster</li>
-</ul>
-<h3 id="diana-divisive">DIANA (divisive)</h3>
-<ul>
-<li>Initially, all objects are in one cluster</li>
-<li>Step-by-step splitting clusters until each cluster contains only one object</li>
-</ul>
-<h3 id="more-details">More Details</h3>
-<ul>
-<li>Single-Link（最短距离链接）：</li>
-</ul>
+<p>The difference between these two kinds of decomposability is whether variables split in the same way in each subfunction.</p>
+<p>Definition of Structured Decomposability:</p>
 <blockquote>
-<p>Single-Link聚类方法将两个簇之间的距离定义为它们中最接近的两个点之间的距离。换句话说，它测量了两个簇中最相似的成员之间的距离。这种方法倾向于形成具有长而窄的簇，因为它强调了局部相似性。Single-Link在处理非凸形状的簇时表现良好，但容易受到噪声和异常值的影响。</p>
+<p>A (X,Y)-partition of a function f goes like:
+$$f(X, Y) = g_1(X)h_1(Y) + &hellip; + g_n(X)h_n(Y)$$
+Where $X \land Y = \empty$ and $X \lor Y$ = all variables in f.<br>
+$g_i$ regarding X is called a prime and $h_i$ regarding Y is called a sub, which requires that:<br>
+$$ \forall i, j, \ g_i \land g_j = False $$
+$$g_1 \lor g_2 &hellip;\lor g_i = True$$
+$$\forall i, \ g_i \neq False $$</p>
 </blockquote>
-<ul>
-<li>Complete-Link（最长距离链接）：</li>
-</ul>
+<p>A (X,Y)-partition is compressed if there is no equal subs. That is,
+$$h_i \neq h_j\ \ \  \forall i \neq j$$</p>
+<h2 id="vtree">Vtree</h2>
+<p>Vtree is a binary tree that denotes the order and the structure of a SDD. Each node’s left branch refers to the element in the primes, and each node’s right branch refers to that of the subs.</p>
+<p>OBDD is a special case of SDD with right-linear a vtree, whose left branch is always a leaf.</p>
+<p>SDD is a strict superset of OBDD, maintaining key properties of OBDD b, and could be exponentially smaller than OBDD.</p>
+<h2 id="building-a-sdd">Building a SDD</h2>
+<p>For example, we have $f = (A \land B) \lor (B \land C) \lor (C \land D)$ and X = {A, B}, Y = {C, D}.</p>
+<p>Then we can have the sub-functions (subs) as condi-
+tioned on the primes:</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>prime</th>
+<th>sub</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$A \land B$</td>
+<td>True</td>
+</tr>
+<tr>
+<td>$A \land \neg B$</td>
+<td>$C \land D$</td>
+</tr>
+<tr>
+<td>$\neg A \land B$</td>
+<td>C</td>
+</tr>
+<tr>
+<td>$\neg A \land \neg B$</td>
+<td>$C \land D$</td>
+</tr>
+</tbody>
+</table></div>
+<p>Resolving the primes with the same sub, to conduct compression:</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>prime</th>
+<th>sub</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$A \land B$</td>
+<td>True</td>
+</tr>
+<tr>
+<td>$\neg B$</td>
+<td>$C \land D$</td>
+</tr>
+<tr>
+<td>$\neg A \land B$</td>
+<td>C</td>
+</tr>
+</tbody>
+</table></div>
+<p>Then we could have f = ($A \land B$)(True) + ($\neg A \land B$)(C) + ($\neg B$)($C \land D$)</p>
+<p>For Vtree, if X and Y are fixed, the leaves under the left branch of the root has to contain and only contain variables belong to X, and right branch for Y. For intermediate nodes (neither leave nor root), do the same recursively.</p>
+<p>Then we can construct the SDD according to the Vtree and f.</p>
+<p>Each node consists of a head and a tail; for either a head or a tail, if it involves more than one variable (a.k.a representing an intermediate node in the vtree), we need to decompose it again (according to its left-right branches in the vtree).</p>
+<p><strong>Most importantly</strong>: I have made this mistake in my Homework. After you constructing the SDD, you need to check whether this SDD can be reduced, that is, whether there are some node that are just the same. You need to combine these nodes.</p>
+<h2 id="polytiom-operation">Polytiom Operation</h2>
+<p>if you have two (X,Y)-partition like:
+$$f: (p_1, q_1) &hellip; (p_n, q_n)$$
+$$g: (r_1, s_1) &hellip; (r_m, s_m)$$
+Then for any logic operator &amp;, we have:
+$$f\  &amp; \ g : (p_i \land r_j, q_i\  &amp; \ s_j), \forall i, j, p_i \land r_j \neq False$$</p>
+<h2 id="bottom-up-compliation-for-obddsdd">Bottom-Up Compliation for OBDD/SDD</h2>
+<p>If we want to compile a CNF:</p>
 <blockquote>
-<p>Complete-Link聚类方法将两个簇之间的距离定义为它们中最不相似的两个点之间的距离。它关注的是两个簇中最不相似的成员之间的距离。这种方法更倾向于形成具有更紧凑形状的簇，因为它强调了簇的全局相似性。Complete-Link对于处理不同大小和不同密度的簇效果较好，但可能会受到异常值的干扰。</p>
+<p>First, we comstruct OBDD/SDD for literals.<br>
+Then, combine literals into clause.<br>
+Finally, combine all the literals into CNF.</p>
 </blockquote>
-<h2 id="algorithm_5-birch">Algorithm_5 BIRCH</h2>
-<blockquote>
-<p>Clustering Feature:  CF = (N, LS, SS)<br>
-N: #data points<br>
-LS: sum of position<br>
-SS: sum of the square of the position</p>
-</blockquote>
-<ul>
-<li>Phase 1: scan DB to build an initial inmemory CF tree (a multi-level compression of the data that tries to preserve the inherent clustering structure of the data)</li>
-<li>Phase 2: use an arbitrary clustering algorithm to cluster the leaf nodes of the CF-tree</li>
-</ul>
-<p><img src="/p/cluster-review-notes-updating.../birch.png"
-	width="1066"
-	height="783"
-	srcset="/p/cluster-review-notes-updating.../birch_hu1f7cfcf85d02ae0cac7b9002dcc28f68_55343_480x0_resize_box_3.png 480w, /p/cluster-review-notes-updating.../birch_hu1f7cfcf85d02ae0cac7b9002dcc28f68_55343_1024x0_resize_box_3.png 1024w"
+<p>Also works for DNF.</p>
+<p><img src="/Bottom-up%20complie.png"
+	
+	
+	
 	loading="lazy"
 	
 	
-		class="gallery-image" 
-		data-flex-grow="136"
-		data-flex-basis="326px"
-	
 ></p>
-<blockquote>
-<p>一开始只有一个空的root，然后一个一个加进去，如果在已有节点的球体内，则合为一个cluster，如果一个cluster超过一定数量，则分裂：选择最远两个点最为两个新的cluster中心点，重新分配，保证树结构完整性。</p>
-</blockquote>
-<h2 id="algorithm_6-distance-based-methods">Algorithm_6 Distance-based Methods</h2>
-<h3 id="previous-knowledge">Previous Knowledge</h3>
-<ul>
-<li><strong>Eps</strong>: Maximum radius of the neighborhood</li>
-<li><strong>MinPts</strong>: Minimum number of points in an Eps- neighborhood of that point</li>
-<li><strong>NEps(p)</strong>: {q | dist(p,q) $\leq$ Eps}</li>
-<li><strong>Core object p</strong>: |Neps(p)| $\ge$ MinPts</li>
-<li>Point q <strong>directly density-reachable</strong> from p iff q $\in$ Neps(p) and p is a core object</li>
-<li><strong>Density-reachable:</strong> p1 $\rightarrow$ p2, p2 $\rightarrow$ p3, &hellip;, pn-1 $\rightarrow$ pn then pn is density-reachable from p1</li>
-<li><strong>Density-connected:</strong> Points p, q are density-reachable from o $\rightarrow$ p and q are density-connected</li>
-</ul>
-<h3 id="dbscan">DBSCAN</h3>
-<ul>
-<li>Arbitrary select a point p</li>
-<li>Retrieve all points directly density-reachable from p wrt Eps and MinPts</li>
-<li>If p is a core point, a cluster is formed</li>
-<li>If p is a border point, no points are density- reachable from p and DBSCAN visits the next point of the database</li>
-<li>Continue the process until all of the points have been processed</li>
-</ul>
-<p><img src="/p/cluster-review-notes-updating.../DBSCAN.png"
-	width="2154"
-	height="820"
-	srcset="/p/cluster-review-notes-updating.../DBSCAN_huabd1eadf2ef4cdb183dd88d1d60e4bc1_347203_480x0_resize_box_3.png 480w, /p/cluster-review-notes-updating.../DBSCAN_huabd1eadf2ef4cdb183dd88d1d60e4bc1_347203_1024x0_resize_box_3.png 1024w"
+<h2 id="canonicity-in-compilation">Canonicity in Compilation</h2>
+<p>fixed variable order -&gt; unique reduced OBDD
+fixed vtree -&gt; unique trimmed &amp; compressed SDD</p>
+<p>However, if we have n variable, then we can have n! kinds of variable order. Then we also have $C_{n-1}$ kinds of dissections(prime and sub). Then we will have:
+$$n!\ *\ C_{n-1} = \frac{(2(n-1))!}{(n-1)!}$$
+kinds of vtree in total.</p>
+<h2 id="operation-on-vtree">Operation on vtree</h2>
+<p>Tree rotate.
+<img src="/tree_rotate.png"
+	
+	
+	
 	loading="lazy"
 	
 	
-		class="gallery-image" 
-		data-flex-grow="262"
-		data-flex-basis="630px"
+></p>
+<p>Tree swap.
+<img src="/tree_swap.png"
+	
+	
+	
+	loading="lazy"
+	
 	
 ></p>
+<p>Search over vtree</p>
+<p>We would use greedy search to enumerate all the vtrees. First, we enumerate all vtree over a window, that is, all the vtrees that can be reachable via a certain amount of rotate/swap operations. Then we greedily accept the best vtree that has been found, and then move window.</p>
+<h1 id="psdd">PSDD</h1>
+<p>probability space -&gt; the truth table -&gt; (world, instantiation, 1/0)</p>
+<p>SDD -&gt; Tractable Boolean Circuit</p>
+<p>PSDD -&gt; probabilistic -&gt; (world, instantiation, Pr())</p>
+<h2 id="from-sdd-to-psdd">From SDD to PSDD</h2>
+<p>PSDD, compared to SDD, is almost the same, except that:</p>
+<ul>
+<li>
+<p>OR-gates: having probability distributions over all inputs.</p>
+</li>
+<li>
+<p>Any two OR-gates may have di↵erent probability distributions.</p>
+</li>
+</ul>
+<p>The AND-gates are just kept the same and no pro- bability applies.</p>
+<h2 id="calculating-rule">Calculating rule</h2>
+<p><img src="/PSDD.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>If we have an input like L, K, P, A, and we need to calculate the probability of this world. We can do following sequencely.</p>
+<ul>
+<li>
+<p>Firstly, we check bottom up. Find all leaves that statisfy the input. For or gate, we continue if one of its branch is selected, and for and gate, we continue only if all its branchs are selected.</p>
+</li>
+<li>
+<p>Then, we calculate top down. From the top gate, for or gate, we add all its selected branch, and for and gate, we multiply all its branches.</p>
+</li>
+</ul>
+<p>For example, in the above figure, we can have:
+$$Pr(L, K, P, A) = 0.3 * 1.0 * 0.8 * 0.4 * 0.25$$</p>
+<p>If our input does not contain all the literals, for example: L, P, A. Then we still could follow the above-mentioned steps and we can have:
+$$Pr(L, P, A) = 0.3 * 1.0 * 1.0 * 0.4 * 0.25$$</p>
+<h1 id="prime-implicate-and-prime-implicant">Prime Implicate and Prime Implicant</h1>
+<p>Firstly, in this section, we denote $\Delta$ as the knowledge base.</p>
+<p>Most importantly, we denote prime Implicate (CNF) as PI and prime implicant (DNF) as IP.</p>
+<p>PI: CNF that contains no subsumed clauses.<br>
+IP: DNF that contains no subsumed terms.</p>
+<p>To obtain PI: close $\Delta$ under resolution then drop subsumed clauses.<br>
+To obtain IP: close $\Delta$ under consensus then drop subsumed terms.</p>
 <blockquote>
-<p>P.S. 一个一个判断，如果是cluster，且范围内点已形成cluster，则加入，若无先前cluster，则新建立一个。若是后建立的和之前建立的通过一个点reachable了，则将两个cluster合为一个。</p>
+<p>P.S. remember! When you are doing resolution/consensus, you can only invlove one literal, that is, you can not do resolution on (A, B, C) and (A, $\neg B$, $\neg C$).</p>
 </blockquote>
+<p>Subsume: all-literals already contained.<br>
+Clause: c1 subsumes c2 -&gt; c1 is shorter than c2 -&gt; c1 entails c2.<br>
+terms: t1 subsumes t2 -&gt; t1 is shorter than t2 -&gt; t2 entail t1.</p>
+<p>Duality: $\alpha$ is PI of $\Delta$, then $\neg \alpha$ is IP of $\neg \Delta$.</p>
+<h1 id="model-based-diagnosis">Model-based Diagnosis</h1>
 
 </section>
 
@@ -528,11 +579,9 @@ SS: sum of the square of the position</p>
     
     <section class="article-tags">
         
-            <a href="/tags/data-analysis/">Data analysis</a>
+            <a href="/tags/automatic-reasoning/">Automatic Reasoning</a>
         
             <a href="/tags/ucla-course-note/">UCLA Course Note</a>
-        
-            <a href="/tags/cluster/">Cluster</a>
         
     </section>
 
@@ -566,30 +615,6 @@ SS: sum of the square of the position</p>
             
                 
 <article class="has-image">
-    <a href="/p/classification-review-notes-updating.../">
-        
-        
-            <div class="article-image">
-                <img src="/p/classification-review-notes-updating.../classification.875924b135fddc1e6984f2fe76e4832a_hu4fc43e2b18ace3d44063bbef11699032_4250_250x150_fill_box_smart1_3.png" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post Classification review notes (updating...)"
-                        
-                        data-hash="md5-h1kksTX93B5phPL&#43;duSDKg==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Classification review notes (updating...)</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
     <a href="/p/nnf-review-notes-updating.../">
         
         
@@ -614,23 +639,47 @@ SS: sum of the square of the position</p>
             
                 
 <article class="has-image">
-    <a href="/p/cs264-review-note-updating.../">
+    <a href="/p/classification-review-notes-updating.../">
         
         
             <div class="article-image">
-                <img src="/p/cs264-review-note-updating.../NNF.9b11e8f5662ff08c11f4b4ee82e2871c_hu14edb053461a8e06e4f1fdca463dbb61_2574_250x150_fill_box_smart1_3.png" 
+                <img src="/p/classification-review-notes-updating.../classification.875924b135fddc1e6984f2fe76e4832a_hu4fc43e2b18ace3d44063bbef11699032_4250_250x150_fill_box_smart1_3.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
-                        alt="Featured image of post CS264 review note (updating...)"
+                        alt="Featured image of post Classification review notes (updating...)"
                         
-                        data-hash="md5-mxHo9WYv8IwR9LTuguKHHA==">
+                        data-hash="md5-h1kksTX93B5phPL&#43;duSDKg==">
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">CS264 review note (updating...)</h2>
+            <h2 class="article-title">Classification review notes (updating...)</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/cluster-review-notes-updating.../">
+        
+        
+            <div class="article-image">
+                <img src="/p/cluster-review-notes-updating.../cluster.a42a786435b0da61e7b62ed2db2ef7a6_hu1f07f723625917ab4cca27f0b859a725_368923_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Cluster review notes (updating...)"
+                        
+                        data-hash="md5-pCp4ZDWw2mHnti7S2y73pg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Cluster review notes (updating...)</h2>
         </div>
     </a>
 </article>
