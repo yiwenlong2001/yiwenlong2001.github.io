@@ -259,21 +259,29 @@ $$n!\ *\ C_{n-1} = \frac{(2(n-1))!}{(n-1)!}$$
 kinds of vtree in total.&lt;/p&gt;
 &lt;h2 id=&#34;operation-on-vtree&#34;&gt;Operation on vtree&lt;/h2&gt;
 &lt;p&gt;Tree rotate.
-&lt;img src=&#34;https://yiwenlong2001.github.io/tree_rotate.png&#34;
-	
-	
-	
+&lt;img src=&#34;https://yiwenlong2001.github.io/p/cs264-review-note-updating.../tree_rotate.png&#34;
+	width=&#34;666&#34;
+	height=&#34;232&#34;
+	srcset=&#34;https://yiwenlong2001.github.io/p/cs264-review-note-updating.../tree_rotate_hu64d86c3c54859ac319874d21287193fd_31241_480x0_resize_box_3.png 480w, https://yiwenlong2001.github.io/p/cs264-review-note-updating.../tree_rotate_hu64d86c3c54859ac319874d21287193fd_31241_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;287&#34;
+		data-flex-basis=&#34;688px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;Tree swap.
-&lt;img src=&#34;https://yiwenlong2001.github.io/tree_swap.png&#34;
-	
-	
-	
+&lt;img src=&#34;https://yiwenlong2001.github.io/p/cs264-review-note-updating.../tree_swap.png&#34;
+	width=&#34;642&#34;
+	height=&#34;160&#34;
+	srcset=&#34;https://yiwenlong2001.github.io/p/cs264-review-note-updating.../tree_swap_hu25cb95ed171198eb43d8ca4ac8ac6b68_21816_480x0_resize_box_3.png 480w, https://yiwenlong2001.github.io/p/cs264-review-note-updating.../tree_swap_hu25cb95ed171198eb43d8ca4ac8ac6b68_21816_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;401&#34;
+		data-flex-basis=&#34;963px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;Search over vtree&lt;/p&gt;
@@ -294,12 +302,16 @@ kinds of vtree in total.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;The AND-gates are just kept the same and no pro- bability applies.&lt;/p&gt;
 &lt;h2 id=&#34;calculating-rule&#34;&gt;Calculating rule&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://yiwenlong2001.github.io/PSDD.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://yiwenlong2001.github.io/p/cs264-review-note-updating.../PSDD.png&#34;
+	width=&#34;1020&#34;
+	height=&#34;488&#34;
+	srcset=&#34;https://yiwenlong2001.github.io/p/cs264-review-note-updating.../PSDD_hua0fa1c3d7903d794ea29471a2eb3ff22_98325_480x0_resize_box_3.png 480w, https://yiwenlong2001.github.io/p/cs264-review-note-updating.../PSDD_hua0fa1c3d7903d794ea29471a2eb3ff22_98325_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;209&#34;
+		data-flex-basis=&#34;501px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;If we have an input like L, K, P, A, and we need to calculate the probability of this world. We can do following sequencely.&lt;/p&gt;
@@ -330,6 +342,55 @@ Clause: c1 subsumes c2 -&amp;gt; c1 is shorter than c2 -&amp;gt; c1 entails c2.&
 terms: t1 subsumes t2 -&amp;gt; t1 is shorter than t2 -&amp;gt; t2 entail t1.&lt;/p&gt;
 &lt;p&gt;Duality: $\alpha$ is PI of $\Delta$, then $\neg \alpha$ is IP of $\neg \Delta$.&lt;/p&gt;
 &lt;h1 id=&#34;model-based-diagnosis&#34;&gt;Model-based Diagnosis&lt;/h1&gt;
+&lt;p&gt;Model-based Diagnosis can be divided into several parts.&lt;/p&gt;
+&lt;p&gt;Firstly, we need to construct the system. For a given circuit, we will have several logic variables and several health variables. Each logic gate has a logic equation, that is, $OK_i \rightarrow $ logic equation of this gate.&lt;/p&gt;
+&lt;p&gt;We define the system observation $\alpha$ and then construct the model-based diagnosis as $\Delta \land \alpha \land OK_{situation}$. $OK_{situation}$ denotes the situation we need to diagnosis. For example, we suppose that OK1 and OK2 are both health, then we need to test $\Delta \land \alpha \land OK_1 \land OK_2$ is statisfiable. If so, then we can say that situation is normal, otherwise it is abnormal.&lt;/p&gt;
+&lt;p&gt;To do model-based diagnosis, we conclude all the normal assignment of the health variables and sinplify.&lt;/p&gt;
+&lt;h2 id=&#34;health-condition&#34;&gt;Health condition&lt;/h2&gt;
+&lt;p&gt;Health condition of system $\Delta$ given observation $\alpha$ is:&lt;br&gt;
+$$Health(\Delta, \alpha) = \exists\ (all\ variables\ except\ health\ variables)\ \Delta \land \alpha$$
+That is, projection of $\Delta \land \alpha$ onto health variables.&lt;/p&gt;
+&lt;p&gt;Based on health condition Health($\Delta$,$\alpha$) we can do model-based diagnosis:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Conflict: implicates of Health($\Delta$,$\alpha$).&lt;/li&gt;
+&lt;li&gt;Min-conflict: PI of Health($\Delta$,$\alpha$).&lt;/li&gt;
+&lt;li&gt;Parlid: implicant of Health($\Delta$,$\alpha$).&lt;/li&gt;
+&lt;li&gt;Kernel: IP of Health($\Delta$,$\alpha$).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;classifier&#34;&gt;Classifier&lt;/h1&gt;
+&lt;p&gt;Function version of a classifier:
+$$f(x_1, x_2, &amp;hellip;, x_n)$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$x_i$ are called features.&lt;/li&gt;
+&lt;li&gt;all features $x_1,x_2,&amp;hellip;x_n$ together: instance.&lt;/li&gt;
+&lt;li&gt;output of f: decision (classifica- tion);&lt;/li&gt;
+&lt;li&gt;positive/negative decision refer to f = 1/0 respectively, while the corresponding instances are called positive/negative instantiation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Boolean Classifier: $x_i$, f have Boolean values.&lt;/p&gt;
+&lt;p&gt;Monotone Classifier: positive instance remains
+positive if we flip some features from negative to positive.&lt;/p&gt;
+&lt;h1 id=&#34;explainable-ai&#34;&gt;Explainable AI&lt;/h1&gt;
+&lt;p&gt;Universal Literal Quantification.&lt;br&gt;
+For binary variable:
+$$\forall x . \Delta = \Delta|x \land (x \lor \Delta|\neg x) $$
+For discrete values variables:
+$$\forall x_i . \Delta = \Delta|x_i \land \land_{j\neq i}(x_i \lor \Delta|x_j)$$&lt;/p&gt;
+&lt;p&gt;General Universal Literal Quantification.&lt;br&gt;
+$$\hat{\forall} x_i . \Delta = \Delta|x_i \land \Delta $$
+Alternatively,
+$$\hat{\forall} x_i . \Delta = \Delta|x_i \land \land_{j\neq i}(\neg x_j \lor \Delta|x_j)$$&lt;/p&gt;
+&lt;p&gt;Now we can introduce the most important definitions in explainable AI.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\Delta$ is the class formula.&lt;/li&gt;
+&lt;li&gt;$I$ is the instance.&lt;/li&gt;
+&lt;li&gt;$\forall I . \Delta$ is complete reason.&lt;/li&gt;
+&lt;li&gt;The PI of complete reason is Sufficient reasons.&lt;/li&gt;
+&lt;li&gt;The IP of complete reason is Necessary reasons.&lt;/li&gt;
+&lt;li&gt;$\hat{\forall} I . \Delta$ is general complete reason.&lt;/li&gt;
+&lt;li&gt;The PI of general complete reason is Genral Sufficient reasons.&lt;/li&gt;
+&lt;li&gt;The IP of general complete reason is General Necessary reasons.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;discrete-logic&#34;&gt;Discrete Logic&lt;/h1&gt;
 </description>
         </item>
         

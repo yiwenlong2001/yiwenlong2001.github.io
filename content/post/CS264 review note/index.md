@@ -93,7 +93,7 @@ If we want to compile a CNF:
 
 Also works for DNF.
 
-![](./Bottom-up%20complie.png)
+![](Bottom-up%20complie.png)
 
 ## Canonicity in Compilation
 
@@ -107,10 +107,10 @@ kinds of vtree in total.
 ## Operation on vtree
 
 Tree rotate.
-![](./tree_rotate.png)
+![](tree_rotate.png)
 
 Tree swap.
-![](./tree_swap.png)
+![](tree_swap.png)
 
 Search over vtree
 
@@ -136,7 +136,7 @@ The AND-gates are just kept the same and no pro- bability applies.
 
 ## Calculating rule
 
-![](./PSDD.png)
+![](PSDD.png)
 
 If we have an input like L, K, P, A, and we need to calculate the probability of this world. We can do following sequencely.
 
@@ -174,4 +174,65 @@ Duality: $\alpha$ is PI of $\Delta$, then $\neg \alpha$ is IP of $\neg \Delta$.
 
 # Model-based Diagnosis
 
+Model-based Diagnosis can be divided into several parts.
+
+Firstly, we need to construct the system. For a given circuit, we will have several logic variables and several health variables. Each logic gate has a logic equation, that is, $OK_i \rightarrow $ logic equation of this gate.
+
+We define the system observation $\alpha$ and then construct the model-based diagnosis as $\Delta \land \alpha \land OK_{situation}$. $OK_{situation}$ denotes the situation we need to diagnosis. For example, we suppose that OK1 and OK2 are both health, then we need to test $\Delta \land \alpha \land OK_1 \land OK_2$ is statisfiable. If so, then we can say that situation is normal, otherwise it is abnormal.
+
+To do model-based diagnosis, we conclude all the normal assignment of the health variables and sinplify.
+
+## Health condition
+
+Health condition of system $\Delta$ given observation $\alpha$ is:  
+$$Health(\Delta, \alpha) = \exists\ (all\ variables\ except\ health\ variables)\ \Delta \land \alpha$$
+That is, projection of $\Delta \land \alpha$ onto health variables.
+
+Based on health condition Health($\Delta$,$\alpha$) we can do model-based diagnosis:  
+
+- Conflict: implicates of Health($\Delta$,$\alpha$).
+- Min-conflict: PI of Health($\Delta$,$\alpha$). 
+- Parlid: implicant of Health($\Delta$,$\alpha$).  
+- Kernel: IP of Health($\Delta$,$\alpha$). 
+
+# Classifier
+
+Function version of a classifier:
+$$f(x_1, x_2, ..., x_n)$$
+- $x_i$ are called features.   
+- all features $x_1,x_2,...x_n$ together: instance.   
+- output of f: decision (classifica- tion);    
+- positive/negative decision refer to f = 1/0 respectively, while the corresponding instances are called positive/negative instantiation.
+
+Boolean Classifier: $x_i$, f have Boolean values.
+
+Monotone Classifier: positive instance remains
+positive if we flip some features from negative to positive.
+
+# Explainable AI
+
+Universal Literal Quantification.  
+For binary variable:
+$$\forall x . \Delta = \Delta|x \land (x \lor \Delta|\neg x) $$
+For discrete values variables:
+$$\forall x_i . \Delta = \Delta|x_i \land \land_{j\neq i}(x_i \lor \Delta|x_j)$$
+
+General Universal Literal Quantification.   
+$$\hat{\forall} x_i . \Delta = \Delta|x_i \land \Delta $$
+Alternatively,
+$$\hat{\forall} x_i . \Delta = \Delta|x_i \land \land_{j\neq i}(\neg x_j \lor \Delta|x_j)$$
+
+Now we can introduce the most important definitions in explainable AI.
+
+- $\Delta$ is the class formula.  
+- $I$ is the instance.  
+- $\forall I . \Delta$ is complete reason.
+- The PI of complete reason is Sufficient reasons.  
+- The IP of complete reason is Necessary reasons.  
+- $\hat{\forall} I . \Delta$ is general complete reason.
+- The PI of general complete reason is Genral Sufficient reasons.  
+- The IP of general complete reason is General Necessary reasons.
+
+
+# Discrete Logic
 
