@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cluster on Wenlong Yi (Evan)</title><link>https://yiwenlong2001.github.io/tags/cluster/</link><description>Recent content in Cluster on Wenlong Yi (Evan)</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 26 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yiwenlong2001.github.io/tags/cluster/index.xml" rel="self" type="application/rss+xml"/><item><title>Cluster review notes (updating...)</title><link>https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../</link><pubDate>Thu, 26 Oct 2023 00:00:00 +0000</pubDate><guid>https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../</guid><description>&lt;img src="https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../cluster.jpg" alt="Featured image of post Cluster review notes (updating...)" />&lt;h1 id="cluster">Cluster&lt;/h1>
+&lt;h2 id="algorithm_1-k-means">Algorithm_1 K-means&lt;/h2>
+&lt;ul>
+&lt;li>randomly choose initial cluster centroics.&lt;/li>
+&lt;li>assign each point to its nearset centroic.&lt;/li>
+&lt;li>do iteration until the location of any centroics does not change:
+&lt;ul>
+&lt;li>caluculate the mean value for every point of each cluster.&lt;/li>
+&lt;li>relocate every point.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="algorithm_2-pam">Algorithm_2 PAM&lt;/h2>
+&lt;ul>
+&lt;li>Arbitrarily choose k objects as the initial medoids&lt;/li>
+&lt;li>Until no change, do
+&lt;ul>
+&lt;li>(Re)assign each object to the cluster to which the nearest medoid&lt;/li>
+&lt;li>Randomly select a non-medoid object o’, compute the total cost, S, of swapping medoid o with o’&lt;/li>
+&lt;li>If S &amp;lt; 0 then swap o with o’ to form the new set of k medoids&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>&lt;strong>Swapping Cost:&lt;/strong> Measure whether o’ is better than o as a medoid&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="algorithm_3-clara">Algorithm_3 CLARA&lt;/h2>
+&lt;ul>
+&lt;li>random sample in huge data&lt;/li>
+&lt;li>do PAM&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>PAM search the whole graph&lt;br>
+CLARA search some random sub-graphs&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="algorithm_4-hierarchical-clustering">Algorithm_4 Hierarchical Clustering&lt;/h2>
+&lt;h3 id="agnes-agglomerative">AGNES (agglomerative)&lt;/h3>
+&lt;ul>
+&lt;li>Initially, each object is a cluster&lt;/li>
+&lt;li>Step-by-step cluster merging, until all objects form a cluster&lt;/li>
+&lt;/ul>
+&lt;h3 id="diana-divisive">DIANA (divisive)&lt;/h3>
+&lt;ul>
+&lt;li>Initially, all objects are in one cluster&lt;/li>
+&lt;li>Step-by-step splitting clusters until each cluster contains only one object&lt;/li>
+&lt;/ul>
+&lt;h3 id="more-details">More Details&lt;/h3>
+&lt;ul>
+&lt;li>Single-Link（最短距离链接）：&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>Single-Link聚类方法将两个簇之间的距离定义为它们中最接近的两个点之间的距离。换句话说，它测量了两个簇中最相似的成员之间的距离。这种方法倾向于形成具有长而窄的簇，因为它强调了局部相似性。Single-Link在处理非凸形状的簇时表现良好，但容易受到噪声和异常值的影响。&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>Complete-Link（最长距离链接）：&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>Complete-Link聚类方法将两个簇之间的距离定义为它们中最不相似的两个点之间的距离。它关注的是两个簇中最不相似的成员之间的距离。这种方法更倾向于形成具有更紧凑形状的簇，因为它强调了簇的全局相似性。Complete-Link对于处理不同大小和不同密度的簇效果较好，但可能会受到异常值的干扰。&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="algorithm_5-birch">Algorithm_5 BIRCH&lt;/h2>
+&lt;blockquote>
+&lt;p>Clustering Feature: CF = (N, LS, SS)&lt;br>
+N: #data points&lt;br>
+LS: sum of position&lt;br>
+SS: sum of the square of the position&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>Phase 1: scan DB to build an initial inmemory CF tree (a multi-level compression of the data that tries to preserve the inherent clustering structure of the data)&lt;/li>
+&lt;li>Phase 2: use an arbitrary clustering algorithm to cluster the leaf nodes of the CF-tree&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../birch.png"
+width="1066"
+height="783"
+srcset="https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../birch_hu1f7cfcf85d02ae0cac7b9002dcc28f68_55343_480x0_resize_box_3.png 480w, https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../birch_hu1f7cfcf85d02ae0cac7b9002dcc28f68_55343_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="136"
+data-flex-basis="326px"
+>&lt;/p>
+&lt;blockquote>
+&lt;p>一开始只有一个空的root，然后一个一个加进去，如果在已有节点的球体内，则合为一个cluster，如果一个cluster超过一定数量，则分裂：选择最远两个点最为两个新的cluster中心点，重新分配，保证树结构完整性。&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="algorithm_6-distance-based-methods">Algorithm_6 Distance-based Methods&lt;/h2>
+&lt;h3 id="previous-knowledge">Previous Knowledge&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>Eps&lt;/strong>: Maximum radius of the neighborhood&lt;/li>
+&lt;li>&lt;strong>MinPts&lt;/strong>: Minimum number of points in an Eps- neighborhood of that point&lt;/li>
+&lt;li>&lt;strong>NEps(p)&lt;/strong>: {q | dist(p,q) $\leq$ Eps}&lt;/li>
+&lt;li>&lt;strong>Core object p&lt;/strong>: |Neps(p)| $\ge$ MinPts&lt;/li>
+&lt;li>Point q &lt;strong>directly density-reachable&lt;/strong> from p iff q $\in$ Neps(p) and p is a core object&lt;/li>
+&lt;li>&lt;strong>Density-reachable:&lt;/strong> p1 $\rightarrow$ p2, p2 $\rightarrow$ p3, &amp;hellip;, pn-1 $\rightarrow$ pn then pn is density-reachable from p1&lt;/li>
+&lt;li>&lt;strong>Density-connected:&lt;/strong> Points p, q are density-reachable from o $\rightarrow$ p and q are density-connected&lt;/li>
+&lt;/ul>
+&lt;h3 id="dbscan">DBSCAN&lt;/h3>
+&lt;ul>
+&lt;li>Arbitrary select a point p&lt;/li>
+&lt;li>Retrieve all points directly density-reachable from p wrt Eps and MinPts&lt;/li>
+&lt;li>If p is a core point, a cluster is formed&lt;/li>
+&lt;li>If p is a border point, no points are density- reachable from p and DBSCAN visits the next point of the database&lt;/li>
+&lt;li>Continue the process until all of the points have been processed&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../DBSCAN.png"
+width="2154"
+height="820"
+srcset="https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../DBSCAN_huabd1eadf2ef4cdb183dd88d1d60e4bc1_347203_480x0_resize_box_3.png 480w, https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../DBSCAN_huabd1eadf2ef4cdb183dd88d1d60e4bc1_347203_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="262"
+data-flex-basis="630px"
+>&lt;/p>
+&lt;blockquote>
+&lt;p>P.S. 一个一个判断，如果是cluster，且范围内点已形成cluster，则加入，若无先前cluster，则新建立一个。若是后建立的和之前建立的通过一个点reachable了，则将两个cluster合为一个。&lt;/p>
+&lt;/blockquote></description></item></channel></rss>

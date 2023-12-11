@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CNNF on Wenlong Yi (Evan)</title><link>https://yiwenlong2001.github.io/tags/cnnf/</link><description>Recent content in CNNF on Wenlong Yi (Evan)</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 28 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yiwenlong2001.github.io/tags/cnnf/index.xml" rel="self" type="application/rss+xml"/><item><title>NNF review notes (updating...)</title><link>https://yiwenlong2001.github.io/p/nnf-review-notes-updating.../</link><pubDate>Sat, 28 Oct 2023 00:00:00 +0000</pubDate><guid>https://yiwenlong2001.github.io/p/nnf-review-notes-updating.../</guid><description>&lt;img src="https://yiwenlong2001.github.io/p/nnf-review-notes-updating.../NNF.png" alt="Featured image of post NNF review notes (updating...)" />&lt;h1 id="nnf-和-对应拓展性质">NNF 和 对应拓展性质&lt;/h1>
+&lt;p>&lt;img src="https://yiwenlong2001.github.io/p/nnf-review-notes-updating.../graph.png"
+width="2552"
+height="1432"
+srcset="https://yiwenlong2001.github.io/p/nnf-review-notes-updating.../graph_hue809ba37d1bd8bc2d34f0900f49d9d9a_893207_480x0_resize_box_3.png 480w, https://yiwenlong2001.github.io/p/nnf-review-notes-updating.../graph_hue809ba37d1bd8bc2d34f0900f49d9d9a_893207_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="178"
+data-flex-basis="427px"
+>&lt;/p>
+&lt;h2 id="nnf">NNF&lt;/h2>
+&lt;ul>
+&lt;li>输入为variable以及variable的否定，由与或门组成的逻辑网络&lt;/li>
+&lt;li>这是一种最常见的逻辑网络，我们没办法做什么&lt;/li>
+&lt;/ul>
+&lt;h2 id="dnnf">DNNF&lt;/h2>
+&lt;ul>
+&lt;li>在NNF的基础上，要求每一个and节点的任意两个分支所涉及的节点交集为空（no overlap）&lt;/li>
+&lt;li>在这个网络上，NNF的可行性可以被简单地验证&lt;/li>
+&lt;li>我们可以在多项式时间内执行：CO, CE, ME这三个任务&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>任务汇总：&lt;br>
+CO: consistency&lt;br>
+VA: Validity&lt;br>
+SE: sentential entailment&lt;br>
+&lt;strong>CE: clausal entailment(KB implies clause)&lt;/strong>&lt;br>
+IP: implicant testing(term implies KB)&lt;br>
+EQ: equivalence testing&lt;br>
+CT: model countig&lt;br>
+ME: model enumeration&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>DNNF能够在线性时间内完成clause entailment&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>如果一个NNF子图能够在线性时间内完成clause entailment，我们称之为tractable。DNNF是tractable的。&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="dnnf-1">dNNF&lt;/h2>
+&lt;ul>
+&lt;li>在NNF的基础上，要求每一个or节点的任意两个分支的输入之间互斥&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>E.g. $(\neg A \land B) \lor (A \land \neg B)$ 就是互斥的&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>这意味着无论你怎么取值，or节点的不可能有两个输入同时为true&lt;/li>
+&lt;li>dNNF不是tractable的&lt;/li>
+&lt;/ul>
+&lt;h2 id="snnf">sNNF&lt;/h2>
+&lt;ul>
+&lt;li>&amp;ldquo;smoothness&amp;rdquo;，在NNF的基础上，要求每一个or节点的任意两个分支所涉及的参数必须相同。&lt;/li>
+&lt;li>sNNF不是tractable的。&lt;/li>
+&lt;/ul>
+&lt;h2 id="d-dnnf">d-DNNF&lt;/h2>
+&lt;ul>
+&lt;li>顾名思义，同时满足dNNF和DNNF。&lt;/li>
+&lt;li>d-DNNF是tractable的。&lt;/li>
+&lt;li>d-DNNF可以在多项式时间内实现VA， IP， CT任务。&lt;/li>
+&lt;/ul>
+&lt;h2 id="sd-dnnf">sd-DNNF&lt;/h2>
+&lt;ul>
+&lt;li>同时满足dNNF和DNNF和sNNF&lt;/li>
+&lt;li>tractable。&lt;/li>
+&lt;/ul>
+&lt;h2 id="f-nnf">f-NNF&lt;/h2>
+&lt;ul>
+&lt;li>flatness or shallow circuit&lt;/li>
+&lt;li>满足性质：网络仅仅只有两层&lt;/li>
+&lt;li>Simple conjunction：由or-and-variable组成，且每个and下的variable均各不相同，我们可以将这种网络改写为DNF形式。&lt;/li>
+&lt;li>Simple conjunction同时满足decomposity性质。&lt;/li>
+&lt;li>Simple disjunction，CNF，同上。&lt;/li>
+&lt;li>f-NNF和CNF不是tractable。但是DNF是tractable的。&lt;/li>
+&lt;/ul>
+&lt;h2 id="pi">PI&lt;/h2>
+&lt;ul>
+&lt;li>prime Implicates, 是一种特殊的CNF，要求CNF满足：
+&lt;ul>
+&lt;li>没有一个clause是其他clause的子集（都是有用的clause）&lt;/li>
+&lt;li>如果可以进行resolution，那么resolution的结果一定本来就可以被其中某个clause imply。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>DNF的版本称之为IP&lt;/li>
+&lt;li>PI来自于CNF， 可以在多项式时间内解决CO, CE, ME, VA, IP, SE, EQ问题&lt;/li>
+&lt;li>IP来自于DNF，可以额外在多项式时间内解决VA, IP, SE, EQ问题。&lt;/li>
+&lt;/ul>
+&lt;h2 id="bdd">BDD&lt;/h2>
+&lt;ul>
+&lt;li>decision graph： variable的取值由其parent决定。&lt;/li>
+&lt;li>同时还是decomposition。&lt;/li>
+&lt;/ul>
+&lt;h2 id="fbdd">FBDD&lt;/h2>
+&lt;ul>
+&lt;li>test one property：从任何一条根节点到叶子节点的路径上，每一个variable都只能出现一次&lt;/li>
+&lt;li>是在d-DNNF和BDD的基础上的，因此他可以在多项式时间内解决七个问题。&lt;/li>
+&lt;/ul>
+&lt;h2 id="obdd">OBDD&lt;/h2>
+&lt;ul>
+&lt;li>在任意从根节点到叶子节点的路径上，都满足同一variable的顺序&lt;/li>
+&lt;li>decision decomposability order&lt;/li>
+&lt;li>可以在多项式时间内完成SE， EQ任务，因此它在多项式时间内可以完成所有的任务。&lt;/li>
+&lt;/ul>
+&lt;h1 id="dnnf详解">DNNF详解&lt;/h1>
+&lt;blockquote>
+&lt;p>transformation operation:&lt;br>
+CD: conditioning.&lt;br>
+SFO: single variable.&lt;br>
+FO: multiple variable.&lt;br>
+&amp;amp;: conjunction.&lt;br>
+B&amp;amp;: bounded conjoin.&lt;br>
+|: disjoin.&lt;br>
+B|: bounded disjoin.&lt;br>
+~: negate&lt;/p>
+&lt;/blockquote>
+&lt;h1 id="sentrntial-decision-diagram">Sentrntial decision diagram&lt;/h1>
+&lt;p>OBDD is influential. &lt;br>
+SDD: Branch on sentences.&lt;br>
+p1, p2, p3 are called primes.&lt;br>
+s1, s2, s3 are called subs.&lt;/p></description></item></channel></rss>

@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Note on Wenlong Yi (Evan)</title><link>https://yiwenlong2001.github.io/categories/note/</link><description>Recent content in Note on Wenlong Yi (Evan)</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 30 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yiwenlong2001.github.io/categories/note/index.xml" rel="self" type="application/rss+xml"/><item><title>Classification review notes (updating...)</title><link>https://yiwenlong2001.github.io/p/classification-review-notes-updating.../</link><pubDate>Mon, 30 Oct 2023 00:00:00 +0000</pubDate><guid>https://yiwenlong2001.github.io/p/classification-review-notes-updating.../</guid><description>&lt;img src="https://yiwenlong2001.github.io/p/classification-review-notes-updating.../classification.png" alt="Featured image of post Classification review notes (updating...)" />&lt;h1 id="classification">Classification&lt;/h1>
+&lt;h2 id="decision-tree">Decision Tree&lt;/h2>
+&lt;ul>
+&lt;li>决策树最主要的就是构建决策树，构建决策树有以下几种著名的算法。&lt;/li>
+&lt;/ul>
+&lt;h3 id="id3算法">ID3算法&lt;/h3>
+&lt;p>ID3算法是一种基于信息熵的算法。通过信息增益找到可以最合适的划分属性。&lt;/p>
+&lt;blockquote>
+&lt;p>Gain(S, A) = E(S) - E(S|A)&lt;br>
+E(S|A) = - sum(|S_i|/|S| * E(S_1))&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>计算所有的属性对应的信息增益，选择信息增益最大的属性对数据集进行划分。&lt;/li>
+&lt;li>递归地对之后的数据集进行划分直到：
+&lt;ul>
+&lt;li>只剩一个属性无法继续划分&lt;/li>
+&lt;li>所有的属性信息增益都很小&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>缺点：&lt;/p>
+&lt;ul>
+&lt;li>无剪枝策略，容易过拟合；&lt;/li>
+&lt;li>只能用于处理离散分布的特征；&lt;/li>
+&lt;li>没有考虑缺失值。&lt;/li>
+&lt;li>信息增益准则对可取值数目较多的特征有所偏好，类似“编号”的特征其信息增益接近于 1，而信息增益比指数可以解决此缺点。&lt;/li>
+&lt;/ul>
+&lt;p>为了解决这些问题，提出这些改进：&lt;/p>
+&lt;h3 id="gain-ratio">Gain ratio&lt;/h3>
+&lt;p>$ SplitInformation = \sum_{i=1}^{c} \frac{|S_i|}{|S|} log_2 \frac{|S_i|}{|S|} $
+$ GainRatio(S, A) = \frac{Gain(S, A)}{SplitInformatio(S, A)} $&lt;/p>
+&lt;h3 id="gini-index">Gini Index&lt;/h3>
+&lt;p>如果一个数据集有n各种类的数据，那么gini index被定义为
+$$ gini(T) = 1 - \sum_{j=1}^n p_j^2$$
+其中$ p_j $是种类j再数据集中的频繁程度&lt;/p>
+&lt;p>假如我们将数据集T分为大小分别为N1和N2的两个子集T1和T2， 那么此次分割中：
+$$ gini_{split}(T) = \frac{N_1}{N} gini(T_1) + \frac{N_2}{N} gini(T_2) $$&lt;/p>
+&lt;p>在各种分割中，选择$ gini_{split}(T) $最小的分法。&lt;/p>
+&lt;h3 id="过拟合">过拟合&lt;/h3>
+&lt;p>针对过拟合可以采用以下两种方法：&lt;/p>
+&lt;ul>
+&lt;li>Prepruning: Halt tree construction early—do not split a node if this would result in the goodness measure falling below a threshold&lt;/li>
+&lt;li>Postpruning: Remove branches from a “fully grown” tree—get a sequence of progressively pruned trees&lt;/li>
+&lt;/ul>
+&lt;p>确定树的大小：使用MDL原则&lt;/p>
+&lt;h2 id="贝叶斯网络">贝叶斯网络&lt;/h2>
+&lt;p>贝叶斯定理：&lt;br>
+given training data x, posteriori probability of a hypothesis H, P(H|X) is $ P(H|X) = \frac{P(X|H) * P(H)}{P(X)} $&lt;/p>
+&lt;ul>
+&lt;li>P(H|X) Posterior probability is the updates probability after the evidence is considered.&lt;/li>
+&lt;li>P(X|H) Likelihood probability&lt;/li>
+&lt;/ul>
+&lt;h3 id="naive-bayesian-classifier">naive bayesian classifier&lt;/h3>
+&lt;p>&amp;ldquo;naive&amp;rdquo; means it assumes class conditional independence.&lt;/p>
+&lt;p>Example:&lt;br>
+P(buy = yes | age &amp;lt;= 30, income = high, student = no).&lt;br>
+Apply Bayes&amp;rsquo;s. theorem:&lt;/p>
+&lt;ul>
+&lt;li>P(B=Y|A&amp;lt;=30, I=H, S=N) = P(B=Y) * P(A&amp;lt;=30, I=H, S=N | B=Y) / P(A&amp;lt;=30, I=H, S=N)&lt;/li>
+&lt;li>其中P(B=Y)直接从数据中得到&lt;/li>
+&lt;li>P(A&amp;lt;=30, I=H, S=N | B=Y)由于独立性可以分解为：P(A&amp;lt;=30 | B=Y) * P(I=H | B=Y) * P(S=N | B=Y)，这三个可以直接从数据中count得到&lt;/li>
+&lt;/ul>
+&lt;h3 id="bayesian-network">Bayesian Network&lt;/h3>
+&lt;p>No longer independent!&lt;br>
+consider: Causal relation (depending relationship) instead.&lt;/p>
+&lt;p>Conditional Independent:&lt;/p>
+&lt;ul>
+&lt;li>S and R is not independent.&lt;/li>
+&lt;li>S given C and R given C is independent!&lt;/li>
+&lt;/ul>
+&lt;p>for a struction like that:&lt;br>
+C&lt;br>
+S R&lt;br>
+W&lt;br>
+we can construct P(C, S, R, W) = P(W|S, R) * P(R|C) * P(S|C) * P(C)&lt;/p>
+&lt;p>Inference: Bottom up.&lt;br>
+First we calculate P(W=T)
+$$ \sum_{c,s,r} P(C=c, S=s, R=r, W=T)$$
+and for two possible reason S and R
+P(S|R) = P(S, R) / P(R)&lt;/p>
+&lt;p>Inference: Top down
+The probability that W=T given that C = T&lt;/p></description></item><item><title>NNF review notes (updating...)</title><link>https://yiwenlong2001.github.io/p/nnf-review-notes-updating.../</link><pubDate>Sat, 28 Oct 2023 00:00:00 +0000</pubDate><guid>https://yiwenlong2001.github.io/p/nnf-review-notes-updating.../</guid><description>&lt;img src="https://yiwenlong2001.github.io/p/nnf-review-notes-updating.../NNF.png" alt="Featured image of post NNF review notes (updating...)" />&lt;h1 id="nnf-和-对应拓展性质">NNF 和 对应拓展性质&lt;/h1>
+&lt;p>&lt;img src="https://yiwenlong2001.github.io/p/nnf-review-notes-updating.../graph.png"
+width="2552"
+height="1432"
+srcset="https://yiwenlong2001.github.io/p/nnf-review-notes-updating.../graph_hue809ba37d1bd8bc2d34f0900f49d9d9a_893207_480x0_resize_box_3.png 480w, https://yiwenlong2001.github.io/p/nnf-review-notes-updating.../graph_hue809ba37d1bd8bc2d34f0900f49d9d9a_893207_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="178"
+data-flex-basis="427px"
+>&lt;/p>
+&lt;h2 id="nnf">NNF&lt;/h2>
+&lt;ul>
+&lt;li>输入为variable以及variable的否定，由与或门组成的逻辑网络&lt;/li>
+&lt;li>这是一种最常见的逻辑网络，我们没办法做什么&lt;/li>
+&lt;/ul>
+&lt;h2 id="dnnf">DNNF&lt;/h2>
+&lt;ul>
+&lt;li>在NNF的基础上，要求每一个and节点的任意两个分支所涉及的节点交集为空（no overlap）&lt;/li>
+&lt;li>在这个网络上，NNF的可行性可以被简单地验证&lt;/li>
+&lt;li>我们可以在多项式时间内执行：CO, CE, ME这三个任务&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>任务汇总：&lt;br>
+CO: consistency&lt;br>
+VA: Validity&lt;br>
+SE: sentential entailment&lt;br>
+&lt;strong>CE: clausal entailment(KB implies clause)&lt;/strong>&lt;br>
+IP: implicant testing(term implies KB)&lt;br>
+EQ: equivalence testing&lt;br>
+CT: model countig&lt;br>
+ME: model enumeration&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>DNNF能够在线性时间内完成clause entailment&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>如果一个NNF子图能够在线性时间内完成clause entailment，我们称之为tractable。DNNF是tractable的。&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="dnnf-1">dNNF&lt;/h2>
+&lt;ul>
+&lt;li>在NNF的基础上，要求每一个or节点的任意两个分支的输入之间互斥&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>E.g. $(\neg A \land B) \lor (A \land \neg B)$ 就是互斥的&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>这意味着无论你怎么取值，or节点的不可能有两个输入同时为true&lt;/li>
+&lt;li>dNNF不是tractable的&lt;/li>
+&lt;/ul>
+&lt;h2 id="snnf">sNNF&lt;/h2>
+&lt;ul>
+&lt;li>&amp;ldquo;smoothness&amp;rdquo;，在NNF的基础上，要求每一个or节点的任意两个分支所涉及的参数必须相同。&lt;/li>
+&lt;li>sNNF不是tractable的。&lt;/li>
+&lt;/ul>
+&lt;h2 id="d-dnnf">d-DNNF&lt;/h2>
+&lt;ul>
+&lt;li>顾名思义，同时满足dNNF和DNNF。&lt;/li>
+&lt;li>d-DNNF是tractable的。&lt;/li>
+&lt;li>d-DNNF可以在多项式时间内实现VA， IP， CT任务。&lt;/li>
+&lt;/ul>
+&lt;h2 id="sd-dnnf">sd-DNNF&lt;/h2>
+&lt;ul>
+&lt;li>同时满足dNNF和DNNF和sNNF&lt;/li>
+&lt;li>tractable。&lt;/li>
+&lt;/ul>
+&lt;h2 id="f-nnf">f-NNF&lt;/h2>
+&lt;ul>
+&lt;li>flatness or shallow circuit&lt;/li>
+&lt;li>满足性质：网络仅仅只有两层&lt;/li>
+&lt;li>Simple conjunction：由or-and-variable组成，且每个and下的variable均各不相同，我们可以将这种网络改写为DNF形式。&lt;/li>
+&lt;li>Simple conjunction同时满足decomposity性质。&lt;/li>
+&lt;li>Simple disjunction，CNF，同上。&lt;/li>
+&lt;li>f-NNF和CNF不是tractable。但是DNF是tractable的。&lt;/li>
+&lt;/ul>
+&lt;h2 id="pi">PI&lt;/h2>
+&lt;ul>
+&lt;li>prime Implicates, 是一种特殊的CNF，要求CNF满足：
+&lt;ul>
+&lt;li>没有一个clause是其他clause的子集（都是有用的clause）&lt;/li>
+&lt;li>如果可以进行resolution，那么resolution的结果一定本来就可以被其中某个clause imply。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>DNF的版本称之为IP&lt;/li>
+&lt;li>PI来自于CNF， 可以在多项式时间内解决CO, CE, ME, VA, IP, SE, EQ问题&lt;/li>
+&lt;li>IP来自于DNF，可以额外在多项式时间内解决VA, IP, SE, EQ问题。&lt;/li>
+&lt;/ul>
+&lt;h2 id="bdd">BDD&lt;/h2>
+&lt;ul>
+&lt;li>decision graph： variable的取值由其parent决定。&lt;/li>
+&lt;li>同时还是decomposition。&lt;/li>
+&lt;/ul>
+&lt;h2 id="fbdd">FBDD&lt;/h2>
+&lt;ul>
+&lt;li>test one property：从任何一条根节点到叶子节点的路径上，每一个variable都只能出现一次&lt;/li>
+&lt;li>是在d-DNNF和BDD的基础上的，因此他可以在多项式时间内解决七个问题。&lt;/li>
+&lt;/ul>
+&lt;h2 id="obdd">OBDD&lt;/h2>
+&lt;ul>
+&lt;li>在任意从根节点到叶子节点的路径上，都满足同一variable的顺序&lt;/li>
+&lt;li>decision decomposability order&lt;/li>
+&lt;li>可以在多项式时间内完成SE， EQ任务，因此它在多项式时间内可以完成所有的任务。&lt;/li>
+&lt;/ul>
+&lt;h1 id="dnnf详解">DNNF详解&lt;/h1>
+&lt;blockquote>
+&lt;p>transformation operation:&lt;br>
+CD: conditioning.&lt;br>
+SFO: single variable.&lt;br>
+FO: multiple variable.&lt;br>
+&amp;amp;: conjunction.&lt;br>
+B&amp;amp;: bounded conjoin.&lt;br>
+|: disjoin.&lt;br>
+B|: bounded disjoin.&lt;br>
+~: negate&lt;/p>
+&lt;/blockquote>
+&lt;h1 id="sentrntial-decision-diagram">Sentrntial decision diagram&lt;/h1>
+&lt;p>OBDD is influential. &lt;br>
+SDD: Branch on sentences.&lt;br>
+p1, p2, p3 are called primes.&lt;br>
+s1, s2, s3 are called subs.&lt;/p></description></item><item><title>Cluster review notes (updating...)</title><link>https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../</link><pubDate>Thu, 26 Oct 2023 00:00:00 +0000</pubDate><guid>https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../</guid><description>&lt;img src="https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../cluster.jpg" alt="Featured image of post Cluster review notes (updating...)" />&lt;h1 id="cluster">Cluster&lt;/h1>
+&lt;h2 id="algorithm_1-k-means">Algorithm_1 K-means&lt;/h2>
+&lt;ul>
+&lt;li>randomly choose initial cluster centroics.&lt;/li>
+&lt;li>assign each point to its nearset centroic.&lt;/li>
+&lt;li>do iteration until the location of any centroics does not change:
+&lt;ul>
+&lt;li>caluculate the mean value for every point of each cluster.&lt;/li>
+&lt;li>relocate every point.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="algorithm_2-pam">Algorithm_2 PAM&lt;/h2>
+&lt;ul>
+&lt;li>Arbitrarily choose k objects as the initial medoids&lt;/li>
+&lt;li>Until no change, do
+&lt;ul>
+&lt;li>(Re)assign each object to the cluster to which the nearest medoid&lt;/li>
+&lt;li>Randomly select a non-medoid object o’, compute the total cost, S, of swapping medoid o with o’&lt;/li>
+&lt;li>If S &amp;lt; 0 then swap o with o’ to form the new set of k medoids&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>&lt;strong>Swapping Cost:&lt;/strong> Measure whether o’ is better than o as a medoid&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="algorithm_3-clara">Algorithm_3 CLARA&lt;/h2>
+&lt;ul>
+&lt;li>random sample in huge data&lt;/li>
+&lt;li>do PAM&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>PAM search the whole graph&lt;br>
+CLARA search some random sub-graphs&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="algorithm_4-hierarchical-clustering">Algorithm_4 Hierarchical Clustering&lt;/h2>
+&lt;h3 id="agnes-agglomerative">AGNES (agglomerative)&lt;/h3>
+&lt;ul>
+&lt;li>Initially, each object is a cluster&lt;/li>
+&lt;li>Step-by-step cluster merging, until all objects form a cluster&lt;/li>
+&lt;/ul>
+&lt;h3 id="diana-divisive">DIANA (divisive)&lt;/h3>
+&lt;ul>
+&lt;li>Initially, all objects are in one cluster&lt;/li>
+&lt;li>Step-by-step splitting clusters until each cluster contains only one object&lt;/li>
+&lt;/ul>
+&lt;h3 id="more-details">More Details&lt;/h3>
+&lt;ul>
+&lt;li>Single-Link（最短距离链接）：&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>Single-Link聚类方法将两个簇之间的距离定义为它们中最接近的两个点之间的距离。换句话说，它测量了两个簇中最相似的成员之间的距离。这种方法倾向于形成具有长而窄的簇，因为它强调了局部相似性。Single-Link在处理非凸形状的簇时表现良好，但容易受到噪声和异常值的影响。&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>Complete-Link（最长距离链接）：&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>Complete-Link聚类方法将两个簇之间的距离定义为它们中最不相似的两个点之间的距离。它关注的是两个簇中最不相似的成员之间的距离。这种方法更倾向于形成具有更紧凑形状的簇，因为它强调了簇的全局相似性。Complete-Link对于处理不同大小和不同密度的簇效果较好，但可能会受到异常值的干扰。&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="algorithm_5-birch">Algorithm_5 BIRCH&lt;/h2>
+&lt;blockquote>
+&lt;p>Clustering Feature: CF = (N, LS, SS)&lt;br>
+N: #data points&lt;br>
+LS: sum of position&lt;br>
+SS: sum of the square of the position&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>Phase 1: scan DB to build an initial inmemory CF tree (a multi-level compression of the data that tries to preserve the inherent clustering structure of the data)&lt;/li>
+&lt;li>Phase 2: use an arbitrary clustering algorithm to cluster the leaf nodes of the CF-tree&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../birch.png"
+width="1066"
+height="783"
+srcset="https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../birch_hu1f7cfcf85d02ae0cac7b9002dcc28f68_55343_480x0_resize_box_3.png 480w, https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../birch_hu1f7cfcf85d02ae0cac7b9002dcc28f68_55343_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="136"
+data-flex-basis="326px"
+>&lt;/p>
+&lt;blockquote>
+&lt;p>一开始只有一个空的root，然后一个一个加进去，如果在已有节点的球体内，则合为一个cluster，如果一个cluster超过一定数量，则分裂：选择最远两个点最为两个新的cluster中心点，重新分配，保证树结构完整性。&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="algorithm_6-distance-based-methods">Algorithm_6 Distance-based Methods&lt;/h2>
+&lt;h3 id="previous-knowledge">Previous Knowledge&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>Eps&lt;/strong>: Maximum radius of the neighborhood&lt;/li>
+&lt;li>&lt;strong>MinPts&lt;/strong>: Minimum number of points in an Eps- neighborhood of that point&lt;/li>
+&lt;li>&lt;strong>NEps(p)&lt;/strong>: {q | dist(p,q) $\leq$ Eps}&lt;/li>
+&lt;li>&lt;strong>Core object p&lt;/strong>: |Neps(p)| $\ge$ MinPts&lt;/li>
+&lt;li>Point q &lt;strong>directly density-reachable&lt;/strong> from p iff q $\in$ Neps(p) and p is a core object&lt;/li>
+&lt;li>&lt;strong>Density-reachable:&lt;/strong> p1 $\rightarrow$ p2, p2 $\rightarrow$ p3, &amp;hellip;, pn-1 $\rightarrow$ pn then pn is density-reachable from p1&lt;/li>
+&lt;li>&lt;strong>Density-connected:&lt;/strong> Points p, q are density-reachable from o $\rightarrow$ p and q are density-connected&lt;/li>
+&lt;/ul>
+&lt;h3 id="dbscan">DBSCAN&lt;/h3>
+&lt;ul>
+&lt;li>Arbitrary select a point p&lt;/li>
+&lt;li>Retrieve all points directly density-reachable from p wrt Eps and MinPts&lt;/li>
+&lt;li>If p is a core point, a cluster is formed&lt;/li>
+&lt;li>If p is a border point, no points are density- reachable from p and DBSCAN visits the next point of the database&lt;/li>
+&lt;li>Continue the process until all of the points have been processed&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../DBSCAN.png"
+width="2154"
+height="820"
+srcset="https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../DBSCAN_huabd1eadf2ef4cdb183dd88d1d60e4bc1_347203_480x0_resize_box_3.png 480w, https://yiwenlong2001.github.io/p/cluster-review-notes-updating.../DBSCAN_huabd1eadf2ef4cdb183dd88d1d60e4bc1_347203_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="262"
+data-flex-basis="630px"
+>&lt;/p>
+&lt;blockquote>
+&lt;p>P.S. 一个一个判断，如果是cluster，且范围内点已形成cluster，则加入，若无先前cluster，则新建立一个。若是后建立的和之前建立的通过一个点reachable了，则将两个cluster合为一个。&lt;/p>
+&lt;/blockquote></description></item><item><title>CS264 review note (updating...)</title><link>https://yiwenlong2001.github.io/p/cs264-review-note-updating.../</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://yiwenlong2001.github.io/p/cs264-review-note-updating.../</guid><description>&lt;img src="https://yiwenlong2001.github.io/p/cs264-review-note-updating.../NNF.png" alt="Featured image of post CS264 review note (updating...)" />&lt;p>We will start from SDD. And previous content will be posted later.&lt;/p>
+&lt;h1 id="sdd">SDD&lt;/h1>
+&lt;p>SDD is a kind of OBDD, which means the order of variable is needed in such circuit. And SDD is unique when canonical / reduced.&lt;/p>
+&lt;h2 id="structured-decomposability">Structured Decomposability&lt;/h2>
+&lt;p>Decomposability:&lt;/p>
+&lt;blockquote>
+&lt;p>f(ABCD) = $(g_1(AB) \land h_1(CD)) \lor (g_2(A) \land h2(BCD)) \lor &amp;hellip;$&lt;/p>
+&lt;/blockquote>
+&lt;p>Structured Decomposability:&lt;/p>
+&lt;blockquote>
+&lt;p>f(ABCD) = $(g_1(AB) \land h_1(CD)) \lor (g_2(AB) \land h2(CD)) \lor &amp;hellip;$&lt;/p>
+&lt;/blockquote>
+&lt;p>The difference between these two kinds of decomposability is whether variables split in the same way in each subfunction.&lt;/p>
+&lt;p>Definition of Structured Decomposability:&lt;/p>
+&lt;blockquote>
+&lt;p>A (X,Y)-partition of a function f goes like:
+$$f(X, Y) = g_1(X)h_1(Y) + &amp;hellip; + g_n(X)h_n(Y)$$
+Where $X \land Y = \empty$ and $X \lor Y$ = all variables in f.&lt;br>
+$g_i$ regarding X is called a prime and $h_i$ regarding Y is called a sub, which requires that:&lt;br>
+$$ \forall i, j, \ g_i \land g_j = False $$
+$$g_1 \lor g_2 &amp;hellip;\lor g_i = True$$
+$$\forall i, \ g_i \neq False $$&lt;/p>
+&lt;/blockquote>
+&lt;p>A (X,Y)-partition is compressed if there is no equal subs. That is,
+$$h_i \neq h_j\ \ \ \forall i \neq j$$&lt;/p>
+&lt;h2 id="vtree">Vtree&lt;/h2>
+&lt;p>Vtree is a binary tree that denotes the order and the structure of a SDD. Each node’s left branch refers to the element in the primes, and each node’s right branch refers to that of the subs.&lt;/p>
+&lt;p>OBDD is a special case of SDD with right-linear a vtree, whose left branch is always a leaf.&lt;/p>
+&lt;p>SDD is a strict superset of OBDD, maintaining key properties of OBDD b, and could be exponentially smaller than OBDD.&lt;/p>
+&lt;h2 id="building-a-sdd">Building a SDD&lt;/h2>
+&lt;p>For example, we have $f = (A \land B) \lor (B \land C) \lor (C \land D)$ and X = {A, B}, Y = {C, D}.&lt;/p>
+&lt;p>Then we can have the sub-functions (subs) as condi-
+tioned on the primes:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>prime&lt;/th>
+&lt;th>sub&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>$A \land B$&lt;/td>
+&lt;td>True&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>$A \land \neg B$&lt;/td>
+&lt;td>$C \land D$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>$\neg A \land B$&lt;/td>
+&lt;td>C&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>$\neg A \land \neg B$&lt;/td>
+&lt;td>$C \land D$&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Resolving the primes with the same sub, to conduct compression:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>prime&lt;/th>
+&lt;th>sub&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>$A \land B$&lt;/td>
+&lt;td>True&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>$\neg B$&lt;/td>
+&lt;td>$C \land D$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>$\neg A \land B$&lt;/td>
+&lt;td>C&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Then we could have f = ($A \land B$)(True) + ($\neg A \land B$)(C) + ($\neg B$)($C \land D$)&lt;/p>
+&lt;p>For Vtree, if X and Y are fixed, the leaves under the left branch of the root has to contain and only contain variables belong to X, and right branch for Y. For intermediate nodes (neither leave nor root), do the same recursively.&lt;/p>
+&lt;p>Then we can construct the SDD according to the Vtree and f.&lt;/p>
+&lt;p>Each node consists of a head and a tail; for either a head or a tail, if it involves more than one variable (a.k.a representing an intermediate node in the vtree), we need to decompose it again (according to its left-right branches in the vtree).&lt;/p>
+&lt;p>&lt;strong>Most importantly&lt;/strong>: I have made this mistake in my Homework. After you constructing the SDD, you need to check whether this SDD can be reduced, that is, whether there are some node that are just the same. You need to combine these nodes.&lt;/p>
+&lt;h2 id="polytiom-operation">Polytiom Operation&lt;/h2>
+&lt;p>if you have two (X,Y)-partition like:
+$$f: (p_1, q_1) &amp;hellip; (p_n, q_n)$$
+$$g: (r_1, s_1) &amp;hellip; (r_m, s_m)$$
+Then for any logic operator &amp;amp;, we have:
+$$f\ &amp;amp; \ g : (p_i \land r_j, q_i\ &amp;amp; \ s_j), \forall i, j, p_i \land r_j \neq False$$&lt;/p>
+&lt;h2 id="bottom-up-compliation-for-obddsdd">Bottom-Up Compliation for OBDD/SDD&lt;/h2>
+&lt;p>If we want to compile a CNF:&lt;/p>
+&lt;blockquote>
+&lt;p>First, we comstruct OBDD/SDD for literals.&lt;br>
+Then, combine literals into clause.&lt;br>
+Finally, combine all the literals into CNF.&lt;/p>
+&lt;/blockquote>
+&lt;p>Also works for DNF.&lt;/p>
+&lt;p>&lt;img src="https://yiwenlong2001.github.io/Bottom-up%20complie.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="canonicity-in-compilation">Canonicity in Compilation&lt;/h2>
+&lt;p>fixed variable order -&amp;gt; unique reduced OBDD
+fixed vtree -&amp;gt; unique trimmed &amp;amp; compressed SDD&lt;/p>
+&lt;p>However, if we have n variable, then we can have n! kinds of variable order. Then we also have $C_{n-1}$ kinds of dissections(prime and sub). Then we will have:
+$$n!\ *\ C_{n-1} = \frac{(2(n-1))!}{(n-1)!}$$
+kinds of vtree in total.&lt;/p>
+&lt;h2 id="operation-on-vtree">Operation on vtree&lt;/h2>
+&lt;p>Tree rotate.
+&lt;img src="https://yiwenlong2001.github.io/p/cs264-review-note-updating.../tree_rotate.png"
+width="666"
+height="232"
+srcset="https://yiwenlong2001.github.io/p/cs264-review-note-updating.../tree_rotate_hu64d86c3c54859ac319874d21287193fd_31241_480x0_resize_box_3.png 480w, https://yiwenlong2001.github.io/p/cs264-review-note-updating.../tree_rotate_hu64d86c3c54859ac319874d21287193fd_31241_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="287"
+data-flex-basis="688px"
+>&lt;/p>
+&lt;p>Tree swap.
+&lt;img src="https://yiwenlong2001.github.io/p/cs264-review-note-updating.../tree_swap.png"
+width="642"
+height="160"
+srcset="https://yiwenlong2001.github.io/p/cs264-review-note-updating.../tree_swap_hu25cb95ed171198eb43d8ca4ac8ac6b68_21816_480x0_resize_box_3.png 480w, https://yiwenlong2001.github.io/p/cs264-review-note-updating.../tree_swap_hu25cb95ed171198eb43d8ca4ac8ac6b68_21816_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="401"
+data-flex-basis="963px"
+>&lt;/p>
+&lt;p>Search over vtree&lt;/p>
+&lt;p>We would use greedy search to enumerate all the vtrees. First, we enumerate all vtree over a window, that is, all the vtrees that can be reachable via a certain amount of rotate/swap operations. Then we greedily accept the best vtree that has been found, and then move window.&lt;/p>
+&lt;h1 id="psdd">PSDD&lt;/h1>
+&lt;p>probability space -&amp;gt; the truth table -&amp;gt; (world, instantiation, 1/0)&lt;/p>
+&lt;p>SDD -&amp;gt; Tractable Boolean Circuit&lt;/p>
+&lt;p>PSDD -&amp;gt; probabilistic -&amp;gt; (world, instantiation, Pr())&lt;/p>
+&lt;h2 id="from-sdd-to-psdd">From SDD to PSDD&lt;/h2>
+&lt;p>PSDD, compared to SDD, is almost the same, except that:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>OR-gates: having probability distributions over all inputs.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Any two OR-gates may have di↵erent probability distributions.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>The AND-gates are just kept the same and no pro- bability applies.&lt;/p>
+&lt;h2 id="calculating-rule">Calculating rule&lt;/h2>
+&lt;p>&lt;img src="https://yiwenlong2001.github.io/p/cs264-review-note-updating.../PSDD.png"
+width="1020"
+height="488"
+srcset="https://yiwenlong2001.github.io/p/cs264-review-note-updating.../PSDD_hua0fa1c3d7903d794ea29471a2eb3ff22_98325_480x0_resize_box_3.png 480w, https://yiwenlong2001.github.io/p/cs264-review-note-updating.../PSDD_hua0fa1c3d7903d794ea29471a2eb3ff22_98325_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="209"
+data-flex-basis="501px"
+>&lt;/p>
+&lt;p>If we have an input like L, K, P, A, and we need to calculate the probability of this world. We can do following sequencely.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Firstly, we check bottom up. Find all leaves that statisfy the input. For or gate, we continue if one of its branch is selected, and for and gate, we continue only if all its branchs are selected.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Then, we calculate top down. From the top gate, for or gate, we add all its selected branch, and for and gate, we multiply all its branches.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>For example, in the above figure, we can have:
+$$Pr(L, K, P, A) = 0.3 * 1.0 * 0.8 * 0.4 * 0.25$$&lt;/p>
+&lt;p>If our input does not contain all the literals, for example: L, P, A. Then we still could follow the above-mentioned steps and we can have:
+$$Pr(L, P, A) = 0.3 * 1.0 * 1.0 * 0.4 * 0.25$$&lt;/p>
+&lt;h1 id="prime-implicate-and-prime-implicant">Prime Implicate and Prime Implicant&lt;/h1>
+&lt;p>Firstly, in this section, we denote $\Delta$ as the knowledge base.&lt;/p>
+&lt;p>Most importantly, we denote prime Implicate (CNF) as PI and prime implicant (DNF) as IP.&lt;/p>
+&lt;p>PI: CNF that contains no subsumed clauses.&lt;br>
+IP: DNF that contains no subsumed terms.&lt;/p>
+&lt;p>To obtain PI: close $\Delta$ under resolution then drop subsumed clauses.&lt;br>
+To obtain IP: close $\Delta$ under consensus then drop subsumed terms.&lt;/p>
+&lt;blockquote>
+&lt;p>P.S. remember! When you are doing resolution/consensus, you can only invlove one literal, that is, you can not do resolution on (A, B, C) and (A, $\neg B$, $\neg C$).&lt;/p>
+&lt;/blockquote>
+&lt;p>Subsume: all-literals already contained.&lt;br>
+Clause: c1 subsumes c2 -&amp;gt; c1 is shorter than c2 -&amp;gt; c1 entails c2.&lt;br>
+terms: t1 subsumes t2 -&amp;gt; t1 is shorter than t2 -&amp;gt; t2 entail t1.&lt;/p>
+&lt;p>Duality: $\alpha$ is PI of $\Delta$, then $\neg \alpha$ is IP of $\neg \Delta$.&lt;/p>
+&lt;h1 id="model-based-diagnosis">Model-based Diagnosis&lt;/h1>
+&lt;p>Model-based Diagnosis can be divided into several parts.&lt;/p>
+&lt;p>Firstly, we need to construct the system. For a given circuit, we will have several logic variables and several health variables. Each logic gate has a logic equation, that is, $OK_i \rightarrow $ logic equation of this gate.&lt;/p>
+&lt;p>We define the system observation $\alpha$ and then construct the model-based diagnosis as $\Delta \land \alpha \land OK_{situation}$. $OK_{situation}$ denotes the situation we need to diagnosis. For example, we suppose that OK1 and OK2 are both health, then we need to test $\Delta \land \alpha \land OK_1 \land OK_2$ is statisfiable. If so, then we can say that situation is normal, otherwise it is abnormal.&lt;/p>
+&lt;p>To do model-based diagnosis, we conclude all the normal assignment of the health variables and sinplify.&lt;/p>
+&lt;h2 id="health-condition">Health condition&lt;/h2>
+&lt;p>Health condition of system $\Delta$ given observation $\alpha$ is:&lt;br>
+$$Health(\Delta, \alpha) = \exists\ (all\ variables\ except\ health\ variables)\ \Delta \land \alpha$$
+That is, projection of $\Delta \land \alpha$ onto health variables.&lt;/p>
+&lt;p>Based on health condition Health($\Delta$,$\alpha$) we can do model-based diagnosis:&lt;/p>
+&lt;ul>
+&lt;li>Conflict: implicates of Health($\Delta$,$\alpha$).&lt;/li>
+&lt;li>Min-conflict: PI of Health($\Delta$,$\alpha$).&lt;/li>
+&lt;li>Parlid: implicant of Health($\Delta$,$\alpha$).&lt;/li>
+&lt;li>Kernel: IP of Health($\Delta$,$\alpha$).&lt;/li>
+&lt;/ul>
+&lt;h1 id="classifier">Classifier&lt;/h1>
+&lt;p>Function version of a classifier:
+$$f(x_1, x_2, &amp;hellip;, x_n)$$&lt;/p>
+&lt;ul>
+&lt;li>$x_i$ are called features.&lt;/li>
+&lt;li>all features $x_1,x_2,&amp;hellip;x_n$ together: instance.&lt;/li>
+&lt;li>output of f: decision (classifica- tion);&lt;/li>
+&lt;li>positive/negative decision refer to f = 1/0 respectively, while the corresponding instances are called positive/negative instantiation.&lt;/li>
+&lt;/ul>
+&lt;p>Boolean Classifier: $x_i$, f have Boolean values.&lt;/p>
+&lt;p>Monotone Classifier: positive instance remains
+positive if we flip some features from negative to positive.&lt;/p>
+&lt;h1 id="explainable-ai">Explainable AI&lt;/h1>
+&lt;p>Universal Literal Quantification.&lt;br>
+For binary variable:
+$$\forall x . \Delta = \Delta|x \land (x \lor \Delta|\neg x) $$
+For discrete values variables:
+$$\forall x_i . \Delta = \Delta|x_i \land \land_{j\neq i}(x_i \lor \Delta|x_j)$$&lt;/p>
+&lt;p>General Universal Literal Quantification.&lt;br>
+$$\hat{\forall} x_i . \Delta = \Delta|x_i \land \Delta $$
+Alternatively,
+$$\hat{\forall} x_i . \Delta = \Delta|x_i \land \land_{j\neq i}(\neg x_j \lor \Delta|x_j)$$&lt;/p>
+&lt;p>Now we can introduce the most important definitions in explainable AI.&lt;/p>
+&lt;ul>
+&lt;li>$\Delta$ is the class formula.&lt;/li>
+&lt;li>$I$ is the instance.&lt;/li>
+&lt;li>$\forall I . \Delta$ is complete reason.&lt;/li>
+&lt;li>The PI of complete reason is Sufficient reasons.&lt;/li>
+&lt;li>The IP of complete reason is Necessary reasons.&lt;/li>
+&lt;li>$\hat{\forall} I . \Delta$ is general complete reason.&lt;/li>
+&lt;li>The PI of general complete reason is Genral Sufficient reasons.&lt;/li>
+&lt;li>The IP of general complete reason is General Necessary reasons.&lt;/li>
+&lt;/ul>
+&lt;h1 id="discrete-logic">Discrete Logic&lt;/h1></description></item></channel></rss>
